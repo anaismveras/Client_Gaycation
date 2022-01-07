@@ -1,38 +1,26 @@
-# Getting Started with Create React App
+# Gaycation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Team Members
+    - Emily Barwinczak
+    - Anais Veras
 
-## Available Scripts
+## Elevator Pitch
 
-In the project directory, you can run:
+Humans who identify as part of the LGBTQIA+ community, especially if they are “visually queer”, don’t always feel safe going on vacation everywhere. There are still many cities and countries around the world where LGBTQIA+ people are not accepted and they could be discriminated against. Gaycation shows vacation spots for LGBTQIA+ people or couples to vacation somewhere that they don’t have to be in fear to hold their partner’s hand in public.
 
-### `npm start`
+## User's Stories
+    - Anyone who is in the LGBTQIA+ community that likes to go on vacation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## ERD
+![Screen Shot 2022-01-07 at 5 01 04 PM](https://user-images.githubusercontent.com/78924263/148613123-d99ac06e-eb36-4ef4-ba85-8612e125f58f.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## User Flow Chart
+![Screen Shot 2022-01-07 at 4 57 33 PM](https://user-images.githubusercontent.com/78924263/148612936-a760b372-23e2-42e9-8a78-7d409937a993.png)
+ 
+## Wireframe
+![Gaycation.pdf](https://github.com/anaismveras/Client_Gaycation/files/7831577/Gaycation.pdf)
+![Gaycation](https://user-images.githubusercontent.com/78924263/148613439-ef12eb20-dd8b-4e03-a314-80d99fb167d1.png)
+![Gaycation (1)](https://user-images.githubusercontent.com/78924263/148613489-d87fa408-9c79-4292-9a73-1cffed4a4994.png)
+![Gaycation (2)](https://user-images.githubusercontent.com/78924263/148613543-7e8cc538-c8f8-4649-ae9a-3eae45239260.png)
+![Gaycation (3)](https://user-images.githubusercontent.com/78924263/148613593-2188d3e3-38ec-4e19-9fa7-5c40197136d9.png)
 
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
