@@ -12,6 +12,8 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+import SearchDestination from './components/main/SearchDestination'
+// import apiUrl from './apiConfig'
 
 const App = () => {
 
@@ -67,6 +69,18 @@ const App = () => {
               <RequireAuth user={user}>
                 <ChangePassword msgAlert={msgAlert} user={user} />
               </RequireAuth>}
+          />
+		  {/* Gaycation made Routes */}
+		  <Route
+            path='/search-destination'
+            element={
+              <RequireAuth user={user}>
+                <SearchDestination 
+					user={user} 
+					msgAlert={msgAlert}
+				/>
+              </RequireAuth>
+            }
           />
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
