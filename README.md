@@ -11,7 +11,7 @@ Humans who identify as part of the LGBTQIA+ community, especially if they are â€
 Anyone who is in the LGBTQIA+ community that likes to go on vacation
 
 ## ERD
-![Screen Shot 2022-01-07 at 5 01 04 PM](https://user-images.githubusercontent.com/78924263/148613123-d99ac06e-eb36-4ef4-ba85-8612e125f58f.png)
+<img width="669" alt="Screen Shot 2022-01-11 at 10 51 45 AM" src="https://user-images.githubusercontent.com/78924263/148992315-5e550bcf-65c4-4202-8a76-13260e1beb28.png">
 
 ## User Flow Chart
 ![Screen Shot 2022-01-07 at 4 57 33 PM](https://user-images.githubusercontent.com/78924263/148612936-a760b372-23e2-42e9-8a78-7d409937a993.png)
