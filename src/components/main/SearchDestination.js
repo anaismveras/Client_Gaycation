@@ -8,8 +8,7 @@ const SearchDestination = (props) => {
 
     const [inputValue, setInputValue] = useState('')
     const [subValue, setSubValue] = useState('')
-    const [destinationsData, setDestinationsData] = useState([])
-    const [destinationsIncluded, setDestinationsIncluded] = useState([])
+    const [destinations, setDestinations] = useState({})
 
     const handleChange = (e) => {
         // for checking
@@ -23,18 +22,17 @@ const SearchDestination = (props) => {
         setSubValue(inputValue)
         axios.get(`http://localhost:8000/destinations/${inputValue}`)
         .then(foundDestinations => {
+            // console.log('this is found destinations\n:')
             // for checking
             // console.log('destinations\n:', foundDestinations)
-            const allDestinationsData = []
-            const allDestinationsIncluded = []
+            const allDestinations = []
             foundDestinations.data.data.forEach(item => {
-                allDestinationsData.push(item)
+                allDestinations.push(item)
             })
             foundDestinations.data.included.forEach(item => {
-                allDestinationsIncluded.push(item)
+                allDestinations.push(item)
             })
-            setDestinationsData(allDestinationsData)
-            setDestinationsIncluded(allDestinationsIncluded)
+            setDestinations(allDestinations)
         })
         .catch(err => console.log(err))
     }
@@ -46,7 +44,7 @@ const SearchDestination = (props) => {
                 <input type="text" onChange={handleChange} />
                 <button onClick={submitDestination}>Submit</button>
             </form>
-                <DestinationFound destinationsData={destinationsData} destinationsIncluded={destinationsIncluded} />
+                <DestinationFound destinations={destinations} />
         </div>
     )
 }

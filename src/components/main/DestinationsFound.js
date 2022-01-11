@@ -1,21 +1,22 @@
 
 const DestinationFound = (props) => {
     // console.log('this is props', props)
-    const mapDestinationsData = props.destinationsData.map((place) => {
-        // console.log('this is the destination name', place)
+    const mapDestinationsData = props.destinations.map((place) => {
+        if (place.attributes.long_name) {
+            return (
+             //    for checking
+             //    console.log('this is place', place)
+             <div>
+                 <h1>{place.attributes.long_name}</h1>
+                 <button>Add to your Gaycations</button>
+             </div>
+            )
+        }
     })
-    // const mapDestinationsIncluded = props.destinationsIncluded.map((image) => {
-    //     if (image.attributes.image) {
-    //         // console.log('this is the destination images', image)
-    //         return (
-    //             <img src={image.attributes.image.large} alt="" />
-    //         )
-    //     } 
-    //     // return <h1>{place.attributes.long_name}</h1>
-    // })
     return (
         <div>
             <h1>Destinations:</h1>
+            {mapDestinationsData}
         </div>
     )
 }
