@@ -9,7 +9,7 @@ code {
 }
 
 .signInPage, .signUpPage, .signOutPage, .changePasswordPage {
-  background-image: url(/Users/ebarw/Documents/SEI/pumpkinsmashers/projects/gaycation/Client_Gaycation/src/images/flag.jpeg);
+  background-image: url(../src/images/flag.jpeg);
   background-size: cover;
   height: 100vh;
 }

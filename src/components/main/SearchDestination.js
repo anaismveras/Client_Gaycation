@@ -8,7 +8,8 @@ const SearchDestination = (props) => {
 
     const [inputValue, setInputValue] = useState('')
     const [subValue, setSubValue] = useState('')
-    const [destinations, setDestinations] = useState([])
+    const [destinationsData, setDestinationsData] = useState([])
+    const [destinationsIncluded, setDestinationsIncluded] = useState([])
 
     const handleChange = (e) => {
         // for checking
@@ -25,14 +26,16 @@ const SearchDestination = (props) => {
             // console.log('this is found destinations\n:')
             // for checking
             // console.log('destinations\n:', foundDestinations)
-            const allDestinations = []
+            const allDestinationsData = []
+            const allDestinationsIncluded = [] 
             foundDestinations.data.data.forEach(item => {
-                allDestinations.push(item)
+                allDestinationsData.push(item)
             })
             foundDestinations.data.included.forEach(item => {
-                allDestinations.push(item)
+                allDestinationsIncluded.push(item)
             })
-            setDestinations(allDestinations)
+            setDestinationsData(allDestinationsData)
+            setDestinationsIncluded(allDestinationsIncluded)
         })
         .catch(err => console.log(err))
     }
@@ -44,7 +47,9 @@ const SearchDestination = (props) => {
                 <input type="text" onChange={handleChange} />
                 <button onClick={submitDestination}>Submit</button>
             </form>
-                <DestinationFound destinations={destinations} />
+                <DestinationFound 
+                destinationsData={destinationsData} destinationsIncluded={destinationsIncluded} 
+                />
         </div>
     )
 }
