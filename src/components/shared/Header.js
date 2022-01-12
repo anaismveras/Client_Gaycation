@@ -2,10 +2,20 @@ import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
+// import '../Home.css'
+
 const linkStyle = {
-    color: 'white',
-    textDecoration: 'none'
+    color: '#424874',
+    textDecoration: 'none',
+	// backgroundColor: 'purple',
 }
+
+const navBarStyling = {
+	backgroundColor: '#FFFDDE',
+	textColor: '#424874',
+	// padding: '0px, 0px, 0px, 50px'
+}
+
 const authenticatedOptions = (
 	<>
 		<Nav.Link>
@@ -43,17 +53,18 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-	<Navbar bg='primary' variant='dark' expand='md'>
+	// <Navbar style={navBarStyling} variant='light' expand='md'>
+	<Navbar style={navBarStyling} expand='md'>
 		<Navbar.Brand>
-            <Link to='/' style={linkStyle}>
-                react-auth-template
-            </Link>
-        </Navbar.Brand>
+			<Link to='/' style={linkStyle}>
+				🌈 Gaycation
+			</Link>
+		</Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse id='basic-navbar-nav'>
 			<Nav className='ml-auto'>
 				{user && (
-					<span className='navbar-text mr-2'>Welcome, {user.email}</span>
+					<span className='navbar-text mr-2 welcomeUser'>Welcome, {user.username}</span>
 				)}
 				{alwaysOptions}
 				{user ? authenticatedOptions : unauthenticatedOptions}
