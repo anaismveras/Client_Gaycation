@@ -1,0 +1,10 @@
+.cpNav, .soNav, .sdNav, .suNav, .siNav, .homeNav {
+    font-family: 'Spline Sans', sans-serif;
+    font-size: small;
+    align-content: right;
+  }
+
+  .headerNav {
+    font-family: 'Spline Sans', sans-serif;
+    font-size: large;
+  }
