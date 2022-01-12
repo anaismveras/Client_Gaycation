@@ -13,7 +13,7 @@ const SearchDestination = (props) => {
 
     const handleChange = (e) => {
         // for checking
-        // console.log('this is what im writing', e.target.value)
+        // console.log('this is what im writing', inputValue)
         setInputValue(e.target.value)
     }
 
@@ -42,10 +42,10 @@ const SearchDestination = (props) => {
 
     return (
         <div>
-            <form>
+            <form onSubmit={submitDestination}>
                 <label htmlFor="destinationName">Destination Name:</label>
                 <input type="text" onChange={handleChange} />
-                <button onClick={submitDestination}>Submit</button>
+                <input type="submit" />
             </form>
                 <DestinationFound 
                 destinationsData={destinationsData} destinationsIncluded={destinationsIncluded} 

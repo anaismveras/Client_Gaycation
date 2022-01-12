@@ -3,21 +3,37 @@ const DestinationFound = (props) => {
     // sanity check
     console.log('this is props desData', props.destinationsData)
     console.log('this is desIncludeData', props.destinationsIncluded)
-    // const images = []
-    // props.destinations.forEach(item => {
-    //     if (item.attributes.image) {
-    //         // console.log('this is image id', item.id)
-    //         //     images.push(item.attributes.image.large)
-    //             images.push({ 
-    //                 id: item.id,
-    //                 imageUrl: item.attributes.image.large
-    //             })
-    //         } else {
-    //             console.log('no image found')
-    //         }
-    //     })
-    //     // checking if images are going into an array
-    //     // console.log('this is the array', images)
+
+    const cityImage = []
+
+    props.destinationsData.forEach(item => {
+        // what is item
+        // console.log('item', item)
+        if (item.relationships.featured_photo) {
+            if (item.relationships.featured_photo.data) {
+                // does it go all the way to get the id of the image in data 
+                // console.log('this is image id', item.relationships.featured_photo.data.id)
+                cityImage.push({ cityImageId: item.relationships.featured_photo.data.id })
+            }
+            } else {
+                console.log('no image found')
+            }
+        })
+        // does it actually go into the array? YES!
+        
+        props.destinationsIncluded.forEach(item => {
+            // what is item
+            // console.log('item', item)
+            if (item.type === 'photo') {
+                // can i get the image url
+                // console.log('this is a photo', item.attributes.image.large)
+                cityImage.push({ imageUrl: item.attributes.image.large })
+            }
+        })
+        // does it push into 
+        // console.log('this is city images', cityImage)
+
+
 
     // const mapDestinationsData = []
     // props.destinations.forEach(place => {
