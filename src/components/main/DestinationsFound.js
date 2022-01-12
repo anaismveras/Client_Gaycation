@@ -1,4 +1,5 @@
-// import noImage from 'src/images/No_Image_Available.jpeg'
+import React from 'react'
+// import noImage from '../images/main/noImage.jpeg'
 
 const DestinationFound = (props) => {
 
@@ -54,7 +55,7 @@ const DestinationFound = (props) => {
                 <div>
                     <h1>{place.cityName}</h1>
                     <img src={place.imageUrl} alt={place.cityName} />
-                    <button>Add to your Gaycations</button>
+                    <button onClick={props.addToGaycation}>Add to your Gaycations</button>
                 </div>
                 )
             } else {
@@ -62,7 +63,7 @@ const DestinationFound = (props) => {
                     <div>
                     <h1>{place.cityName}</h1>
                     {/* <img src={noImage} alt=""/> */}
-                    <button>Add to your Gaycations</button>
+                    <button onClick={props.addToGaycation}>Add to your Gaycations</button>
                 </div>
                 )
             }

@@ -35,6 +35,11 @@ const authenticatedOptions = (
 				Search Destinations
 			</Link>
 		</Nav.Link>
+		<Nav.Link>
+			<Link to='gaycation-profile' style={linkStyle}>
+				Gaycations
+			</Link>
+		</Nav.Link>
 	</>
 )
 

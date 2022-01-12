@@ -40,6 +40,10 @@ const SearchDestination = (props) => {
         .catch(err => console.log(err))
     }
 
+    const addToGaycation = () => {
+        
+    }
+
     return (
         <div>
             <form onSubmit={submitDestination}>
@@ -48,7 +52,8 @@ const SearchDestination = (props) => {
                 <input type="submit" />
             </form>
                 <DestinationFound 
-                destinationsData={destinationsData} destinationsIncluded={destinationsIncluded} 
+                destinationsData={destinationsData} 
+                destinationsIncluded={destinationsIncluded} 
                 />
         </div>
     )
