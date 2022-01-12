@@ -1,8 +1,8 @@
 
 const DestinationFound = (props) => {
     // sanity check
-    // console.log('this is props desData', props.destinationsData)
-    // console.log('this is desIncludeData', props.destinationsIncluded)
+    console.log('this is props desData', props.destinationsData)
+    console.log('this is desIncludeData', props.destinationsIncluded)
 
     const cityImage = []
     // const allDestinationInfo = props.destinationsData.concat(props.destinationsIncluded)
@@ -33,7 +33,7 @@ const DestinationFound = (props) => {
             }
         })
         // does it push into 
-        // console.log('this is city images', cityImage)
+        console.log('this is city images', cityImage)
 
         const mapDestinations = props.destinationsData.map(place => {
             // return console.log('this is the data', place.relationships.featured_photo.data[0])
@@ -42,18 +42,19 @@ const DestinationFound = (props) => {
                 // return console.log('this better work', place.relationships.featured_photo.data.id)
                 cityImage.map(image => {
                     if (image.imageUrl.includes(place.relationships.featured_photo.data.id)) {
-                        return (
-                            // console.log('this works',image.imageUrl)
+                        return ( 
+                            // console.log('this works', image.imageUrl)
+                                // console.log('this is place name', place.attributes.long_name)
                             <div>
                                 <h1>{place.attributes.long_name}</h1>
-                                <img src={image.imageUrl} alt="" />
+                                <img src={image.imageUrl} />
                                 <button>Add to your Gaycations</button>
                             </div>
                         )
                     }
                 })
             } else {
-                return console.log('this image is null')
+                //  console.log('this image is null')
             }
         })
     return (
