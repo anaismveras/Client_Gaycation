@@ -8,8 +8,8 @@ code {
     monospace;
 }
 
-.signInPage, .signUpPage, .signOutPage, .changePasswordPage {
-  background-image: url(./images/flag.jpeg);
+.signInPage, .signUpPage, .signOutPage, .changePasswordPage 
+  background-image: url(../src/images/flag.jpeg);
   background-size: cover;
   height: 100vh;
 }

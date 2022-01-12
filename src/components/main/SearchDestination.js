@@ -8,11 +8,12 @@ const SearchDestination = (props) => {
 
     const [inputValue, setInputValue] = useState('')
     const [subValue, setSubValue] = useState('')
-    const [destinations, setDestinations] = useState([])
-
+    const [destinationsData, setDestinationsData] = useState([])
+    const [destinationsIncluded, setDestinationsIncluded] = useState([])
+    const [allDestinationsInfo, setAllDestinationsInfo] = useState([])
     const handleChange = (e) => {
         // for checking
-        // console.log('this is what im writing', e.target.value)
+        // console.log('this is what im writing', inputValue)
         setInputValue(e.target.value)
     }
 
@@ -25,26 +26,30 @@ const SearchDestination = (props) => {
             // console.log('this is found destinations\n:')
             // for checking
             // console.log('destinations\n:', foundDestinations)
-            const allDestinations = []
+            const allDestinationsData = []
+            const allDestinationsIncluded = [] 
             foundDestinations.data.data.forEach(item => {
-                allDestinations.push(item)
+                allDestinationsData.push(item)
             })
             foundDestinations.data.included.forEach(item => {
-                allDestinations.push(item)
+                allDestinationsIncluded.push(item)
             })
-            setDestinations(allDestinations)
+            setDestinationsData(allDestinationsData)
+            setDestinationsIncluded(allDestinationsIncluded)
         })
         .catch(err => console.log(err))
     }
 
     return (
         <div>
-            <form>
+            <form onSubmit={submitDestination}>
                 <label htmlFor="destinationName">Destination Name:</label>
                 <input type="text" onChange={handleChange} />
-                <button onClick={submitDestination}>Submit</button>
+                <input type="submit" />
             </form>
-                <DestinationFound destinations={destinations} />
+                <DestinationFound 
+                destinationsData={destinationsData} destinationsIncluded={destinationsIncluded} 
+                />
         </div>
     )
 }
