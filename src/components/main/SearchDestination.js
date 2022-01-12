@@ -10,7 +10,7 @@ const SearchDestination = (props) => {
     const [subValue, setSubValue] = useState('')
     const [destinationsData, setDestinationsData] = useState([])
     const [destinationsIncluded, setDestinationsIncluded] = useState([])
-
+    const [allDestinationsInfo, setAllDestinationsInfo] = useState([])
     const handleChange = (e) => {
         // for checking
         // console.log('this is what im writing', inputValue)
