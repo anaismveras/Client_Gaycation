@@ -8,7 +8,7 @@ const SearchDestination = (props) => {
 
     const [inputValue, setInputValue] = useState('')
     const [subValue, setSubValue] = useState('')
-    const [destinations, setDestinations] = useState({})
+    const [destinations, setDestinations] = useState([])
 
     const handleChange = (e) => {
         // for checking
