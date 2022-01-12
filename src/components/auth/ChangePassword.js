@@ -31,13 +31,6 @@ const ChangePassword = (props) => {
         const passwords = {oldPassword, newPassword}
 
 		changePassword(passwords, user)
-			.then(() =>
-				msgAlert({
-					heading: 'Change Password Success',
-					message: messages.changePasswordSuccess,
-					variant: 'success',
-				})
-			)
 			.then(() => navigate('/search-destination'))
 			.catch((error) => {
 				setOldPassword('')
