@@ -13,6 +13,7 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import SearchDestination from './components/main/SearchDestination'
+import UsersGaycations from './components/main/UsersGaycations'
 // import apiUrl from './apiConfig'
 
 const App = () => {
@@ -44,6 +45,7 @@ const App = () => {
 
 		return (
 			<Fragment>
+				{/* Auth Routes */}
 				<Header user={user} />
 				<Routes>
 					<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
@@ -70,12 +72,23 @@ const App = () => {
                 <ChangePassword msgAlert={msgAlert} user={user} />
               </RequireAuth>}
           />
-		  {/* Gaycation made Routes */}
+		  {/* Gaycation Routes */}
 		  <Route
             path='/search-destination'
             element={
               <RequireAuth user={user}>
                 <SearchDestination 
+					user={user} 
+					msgAlert={msgAlert}
+				/>
+              </RequireAuth>
+            }
+          />
+		   <Route
+            path='/gaycation-profile'
+            element={
+              <RequireAuth user={user}>
+                <UsersGaycations
 					user={user} 
 					msgAlert={msgAlert}
 				/>
