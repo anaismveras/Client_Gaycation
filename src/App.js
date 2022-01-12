@@ -14,7 +14,7 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import SearchDestination from './components/main/SearchDestination'
-import UsersGaycations from './components/main/UsersGaycations'
+// import UsersGaycations from './components/main/UsersGaycations'
 import Contact from './components/Contact'
 // import apiUrl from './apiConfig'
 
@@ -91,7 +91,7 @@ const App = () => {
 						</RequireAuth>
 					}
 				/>
-				<Route
+				{/* <Route
 					path='/gaycation-profile'
 					element={
 						<RequireAuth user={user}>
@@ -101,7 +101,7 @@ const App = () => {
 							/>
 						</RequireAuth>
 					}
-				/>
+				/> */}
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert
