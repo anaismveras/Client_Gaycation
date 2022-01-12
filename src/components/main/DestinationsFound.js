@@ -1,4 +1,5 @@
-// import noImage from 'src/images/No_Image_Available.jpeg'
+import React from 'react'
+// import noImage from '../images/main/noImage.jpeg'
 
 const DestinationFound = (props) => {
 
