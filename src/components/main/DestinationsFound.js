@@ -55,7 +55,7 @@ const DestinationFound = (props) => {
                 <div>
                     <h1>{place.cityName}</h1>
                     <img src={place.imageUrl} alt={place.cityName} />
-                    <button>Add to your Gaycations</button>
+                    <button onClick={props.addToGaycation}>Add to your Gaycations</button>
                 </div>
                 )
             } else {
@@ -63,7 +63,7 @@ const DestinationFound = (props) => {
                     <div>
                     <h1>{place.cityName}</h1>
                     {/* <img src={noImage} alt=""/> */}
-                    <button>Add to your Gaycations</button>
+                    <button onClick={props.addToGaycation}>Add to your Gaycations</button>
                 </div>
                 )
             }
