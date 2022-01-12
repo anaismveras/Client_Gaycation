@@ -8,7 +8,7 @@ code {
     monospace;
 }
 
-.signInPage, .signUpPage, .signOutPage, .changePasswordPage {
+.signInPage, .signUpPage, .signOutPage, .changePasswordPage 
   background-image: url(../src/images/flag.jpeg);
   background-size: cover;
   height: 100vh;
@@ -20,6 +20,7 @@ code {
   padding-top: 1%;
   font-family: 'Spline Sans', sans-serif;
   color: #424874;
+  border-radius: 10px;
 }
 
 .signUpText {
@@ -28,6 +29,7 @@ code {
   padding-top: 1%;
   font-family: 'Spline Sans', sans-serif;
   color: #424874;
+  border-radius: 10px;
 }
 
 .signOutText {
@@ -37,6 +39,7 @@ code {
   font-family: 'Spline Sans', sans-serif;
   color: #424874;
   text-align: center;
+  border-radius: 10px;
 }
 
 
