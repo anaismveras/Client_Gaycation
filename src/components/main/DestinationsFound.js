@@ -1,63 +1,73 @@
+// import noImage from 'src/images/No_Image_Available.jpeg'
 
 const DestinationFound = (props) => {
-    // sanity check
-    console.log('this is props desData', props.destinationsData)
-    console.log('this is desIncludeData', props.destinationsIncluded)
 
-    const cityImage = []
-    // const allDestinationInfo = props.destinationsData.concat(props.destinationsIncluded)
-    // console.log('this is all the info', allDestinationInfo)
+    const builtDestinationsCityInfo = []
+    const builtDestinationsImageInfo = []
+    const allInfo = props.destinationsData.concat(props.destinationsIncluded)
 
-    // props.destinationsData.forEach(item => {
-    //     // what is item
-    //     // console.log('item', item)
-    //     if (item.relationships.featured_photo) {
-    //         if (item.relationships.featured_photo.data) {
-    //             // does it go all the way to get the id of the image in data 
-    //             // console.log('this is image id', item.relationships.featured_photo.data.id)
-    //             cityImage.push({ cityImageId: item.relationships.featured_photo.data.id })
-    //         }
-    //         } else {
-    //             console.log('no image found')
-    //         }
-    //     })
-        // does it actually go into the array? YES!
-        
-        props.destinationsIncluded.forEach(item => {
-            // what is item
-            // console.log('item', item)
-            if (item.type === 'photo') {
-                // can i get the image url
-                // console.log('this is a photo', item.attributes.image.large)
-                cityImage.push({ imageUrl: item.attributes.image.large })
-            }
-        })
-        // does it push into 
-        console.log('this is city images', cityImage)
-
-        const mapDestinations = props.destinationsData.map(place => {
-            // return console.log('this is the data', place.relationships.featured_photo.data[0])
-
-            if (place.relationships.featured_photo.data !== null) {
-                // checking to see if i can get ti the id
-                // return console.log('this better work', place.relationships.featured_photo.data.id)
-                cityImage.map(image => {
-                    if (image.imageUrl.includes(place.relationships.featured_photo.data.id)) {
-                        return ( 
-                            // console.log('this works', image.imageUrl)
-                                // console.log('this is place name', place.attributes.long_name)
-                            <div>
-                                <h1>{place.attributes.long_name}</h1>
-                                <img src={image.imageUrl} />
-                                <button>Add to your Gaycations</button>
-                            </div>
-                        )
-                    }}
-                    )
+    allInfo.forEach(item => {
+        // what is item
+        // console.log('this is item', item)
+        if (item.relationships) {
+            // console.log('featured image id', item.relationships.featured_photo.data)
+            if (item.relationships.featured_photo.data != null) {
+                // console.log('this is the image id',item.relationships.featured_photo.data.id)
+                builtDestinationsCityInfo.push(
+                    {cityImageId: item.relationships.featured_photo.data.id,
+                    cityName: item.attributes.long_name})
             } else {
-                 console.log('this image is null')
+                // console.log('there is not image found')
+                builtDestinationsCityInfo.push({
+                    cityName: item.attributes.long_name,
+                    cityImageId: "There is no image for this city"
+                })
+            }
+        } else if (item.type == 'photo') {
+            console.log('this is the image url', item.id)
+            builtDestinationsImageInfo.push( 
+                {
+                    imageUrl:item.attributes.image.large,
+                    cityImageId: item.id
+                }
+                )
+        } 
+    })
+    // console.log('this is city info', builtDestinationsCityInfo)
+    // console.log('this is image array', builtDestinationsImageInfo)
+
+        const allCityInfo = builtDestinationsCityInfo.map((e) => {
+            // console.log('this is item', item)
+            let temp = builtDestinationsImageInfo.find(element => element.cityImageId === e.cityImageId)
+            // console.log('this is temp', temp)
+                if (temp) {
+                    e.imageUrl = temp.imageUrl
+                } 
+                return e
+        })
+        // console.log('this is everything', allCityInfo)
+
+        const mapDestinations = allCityInfo.map(place => {
+            // console.log('this is place', place)
+            if (place.imageUrl) {
+                return (
+                <div>
+                    <h1>{place.cityName}</h1>
+                    <img src={place.imageUrl} alt={place.cityName} />
+                    <button>Add to your Gaycations</button>
+                </div>
+                )
+            } else {
+                return (
+                    <div>
+                    <h1>{place.cityName}</h1>
+                    {/* <img src={noImage} alt=""/> */}
+                    <button>Add to your Gaycations</button>
+                </div>
+                )
             }
         })
+
     return (
         <div>
             <h1>Destinations:</h1>
