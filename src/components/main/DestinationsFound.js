@@ -37,6 +37,7 @@ const DestinationFound = (props) => {
 
         const mapDestinations = props.destinationsData.map(place => {
             // return console.log('this is the data', place.relationships.featured_photo.data[0])
+
             if (place.relationships.featured_photo.data !== null) {
                 // checking to see if i can get ti the id
                 // return console.log('this better work', place.relationships.featured_photo.data.id)
@@ -51,10 +52,10 @@ const DestinationFound = (props) => {
                                 <button>Add to your Gaycations</button>
                             </div>
                         )
-                    }
-                })
+                    }}
+                    )
             } else {
-                //  console.log('this image is null')
+                 console.log('this image is null')
             }
         })
     return (
