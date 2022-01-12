@@ -1,13 +1,51 @@
-body {
+html {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Spline Sans', sans-serif;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.signInPage, .signUpPage, .signOutPage, .changePasswordPage {
+  background-image: url(/Users/ebarw/Documents/SEI/pumpkinsmashers/projects/gaycation/Client_Gaycation/src/images/flag.jpeg);
+  background-size: cover;
+  height: 100vh;
+}
+
+.signInText, .signOutText, .changePasswordText {
+  background-color: rgba(183, 217, 248, 0.505);
+  height: 275px;
+  padding-top: 1%;
+  font-family: 'Spline Sans', sans-serif;
+  color: #424874;
+}
+
+.signUpText {
+  background-color: rgba(183, 217, 248, 0.505);
+  height: 400px;
+  padding-top: 1%;
+  font-family: 'Spline Sans', sans-serif;
+  color: #424874;
+}
+
+.signOutText {
+  background-color: rgba(183, 217, 248, 0.505);
+  height: 275px;
+  padding-top: 1%;
+  font-family: 'Spline Sans', sans-serif;
+  color: #424874;
+  text-align: center;
+}
+
+
+/* #signInButton {
+  font-family: 'Spline Sans', sans-serif;
+  background-image: linear-gradient(to bottom right, #fa1616e1, #f40551ea, #FFD371,#EDF285,#C2FFD9, #12CAD6, #516bebda, #5F6CAF,violet); 
+} */
+
+
+.welcomeUser {
+  color: #424874;
 }
