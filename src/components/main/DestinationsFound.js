@@ -25,7 +25,7 @@ const DestinationFound = (props) => {
                 })
             }
         } else if (item.type == 'photo') {
-            console.log('this is the image url', item.id)
+            // console.log('this is the image url', item.id)
             builtDestinationsImageInfo.push( 
                 {
                     imageUrl:item.attributes.image.large,
