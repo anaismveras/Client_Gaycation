@@ -33,7 +33,7 @@ const SignUp = (props) => {
 					variant: 'success',
 				})
 			)
-			.then(() => navigate('/'))
+			.then(() => navigate('/search-destination'))
 			.catch((error) => {
                 setEmail('')
                 setUsername('')
