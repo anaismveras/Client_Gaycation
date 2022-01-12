@@ -1,4 +1,4 @@
-.cpNav, .soNav, .sdNav, .suNav, .siNav, .homeNav {
+.cpNav, .soNav, .sdNav, .suNav, .siNav, .homeNav, .gpNav, .cuNav {
     font-family: 'Spline Sans', sans-serif;
     font-size: small;
     align-content: right;
@@ -7,4 +7,22 @@
   .headerNav {
     font-family: 'Spline Sans', sans-serif;
     font-size: large;
+  }
+
+  .navbar-text {
+    font-family: 'Spline Sans', sans-serif;
+  }
+
+  /* .cpNav, .soNav, .sdNav, .gpNav, .cuNav { */
+    /* padding: 7px;
+    font-family: 'Spline Sans', sans-serif; */
+    /* font-size: small;
+  } */
+
+  .navbar-nav {
+    position: absolute;
+    right: 1%;
+    float: right;
+    justify-content: flex-end;
+    align-content: space-between;
   }
