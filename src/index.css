@@ -49,7 +49,51 @@ code {
 } */
 
 
-.welcomeUser {
+/* CONTACT PAGE STYLING  */
+
+ .contact {
+  background-color: #E7FBBE;
+  font-family: 'Spline Sans', sans-serif;
+  text-align: center;
+  float: center;
+  padding-top: 4%;
   color: #424874;
 }
 
+ .column {
+  text-align: center;
+  padding-top: 4%;
+  font-size: small;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1px;
+}
+
+.logo {
+  height: 60px;
+  width: 60px;
+}
+
+.logoDiv {
+  display: inline;
+}
+
+.contactImages {
+  height: 300px;
+  width: 300px;
+}
+
+.footer{
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f1fbdc;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  text-decoration: underline;
+}
