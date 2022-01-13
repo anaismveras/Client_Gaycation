@@ -10,9 +10,9 @@ const SearchDestination = (props) => {
     const [destinationsData, setDestinationsData] = useState([])
     const [destinationsIncluded, setDestinationsIncluded] = useState([])
     const [destinations, setDestinations] = useState([])
-    const [likedDestinations, setLikedDestinations] = useState({
-        city: ''
-    })
+    // const [likedDestinations, setLikedDestinations] = useState({
+    //     city: ''
+    // })
 
     const handleChange = (e) => {
         // for checking
@@ -45,19 +45,31 @@ const SearchDestination = (props) => {
     }
 
     console.log('this is the detinaitionsData', destinationsData)
-    console.log('this is destinationsIncluded', destinationsIncluded)
+    // console.log('this is destinationsIncluded', destinationsIncluded)
 
-    destinationsData.map(item => {
-        // console.log('this is item', item.attributes.long_name)
+    console.log('this is destinations', destinations)
+
+    const cityInfo = destinationsData.map(item => {
+        // console.log('this is item', item.attributes.long_name
+        return {cityName: item.attributes.long_name}
     })
 
+    // const handleButton = (e) => {
+    //     console.log('this is e', e)
+    //     // e.target.
+    // }
 
-    const addToGaycation = () => {
-        axios.post(`http://localhost:8000/destinations`, {
-             city: destinations.city
-        })
-    }
+    // const addToGaycation = () => {
 
+    //     axios.post(`http://localhost:8000/destinations`, {
+    //          city: cityInfo.cityName
+    //     }, 
+    //     {
+    //         headers: {
+    //             "Authorization": `Bearer ${props.user.token}`
+    //         }
+    //     })
+    // }
     return (
         <div>
             <form onSubmit={submitDestination}>
@@ -68,7 +80,8 @@ const SearchDestination = (props) => {
                 <DestinationFound 
                 destinationsData={destinationsData} 
                 destinationsIncluded={destinationsIncluded} 
-                // addToGaycation={addToGaycation}
+                // addToGaycation={handleButton}
+                user={props.user}
                 />
         </div>
     )

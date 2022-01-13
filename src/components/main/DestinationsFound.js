@@ -1,5 +1,6 @@
 import React from 'react'
 // import noImage from '../images/main/noImage.jpeg'
+import axios from 'axios'
 
 const DestinationFound = (props) => {
 
@@ -46,16 +47,43 @@ const DestinationFound = (props) => {
                 } 
                 return e
         })
-        // console.log('this is everything', allCityInfo)
+        console.log('this is everything', allCityInfo)
 
-        const mapDestinations = allCityInfo.map(place => {
+    //     const handleButton = () => {
+    //         console.log('this is e', e.target)
+    //     }
+
+    //     const addToGaycation = () => {
+    //     axios.post(`http://localhost:8000/destinations`, {
+    //         //  city: cityInfo.cityName
+    //     }, 
+    //     {
+    //         headers: {
+    //             "Authorization": `Bearer ${props.user.token}`
+    //         }
+    //     })
+    // }
+
+        const saveCity = (place) => {
+            // console.log(allCityInfo[place])
+            axios.post(`http://localhost:8000/destinations`, {
+                body: allCityInfo[place]
+            }, 
+            {
+                headers: {
+                    "Authorization": `Bearer ${props.user.token}`
+                }
+            })
+        }
+
+        const mapDestinations = allCityInfo.map((place, i) => {
             // console.log('this is place', place)
             if (place.imageUrl) {
                 return (
                 <div>
                     <h1>{place.cityName}</h1>
                     <img src={place.imageUrl} alt={place.cityName} />
-                    <button onClick={props.addToGaycation}>Add to your Gaycations</button>
+                    <button onClick={() => {saveCity(i)}}>Add to your Gaycations</button>
                 </div>
                 )
             } else {
@@ -63,7 +91,7 @@ const DestinationFound = (props) => {
                     <div>
                     <h1>{place.cityName}</h1>
                     {/* <img src={noImage} alt=""/> */}
-                    <button onClick={props.addToGaycation}>Add to your Gaycations</button>
+                    <button onClick={() => {saveCity(i)}}>Add to your Gaycations</button>
                 </div>
                 )
             }
