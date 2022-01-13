@@ -1,33 +1,24 @@
 import React from "react"
+import { useState } from "react"
 import axios from "axios"
 
-const UsersGaycations = () => {
-    // for sanity check
-    const [likedDestinations, setLikedDestinations] = [{
-        city: '',
-        state: '',
-        country: '',
-        lgbtRating: '',
-        image_url: '',
-        description: '',
-        owner: '',
-        business: [],
-        reviews: [],
-        roadGoatId: ''
-    }]
 
-    const postGaycation = () => {
-        axios.post(`http://localhost:8000/destinations`, {
-            city: '',
-            state: '',
-            country: '',
-            lgbtRating: '',
-            image_url: '',
-            description: '',
-            owner: '',
-            roadGoatId: ''
-        }) 
-    }
+
+const UsersGaycations = () => {
+    
+    const [gaycations, setGaycations] = useState([])
+
+    // const getGaycations = (e) => {
+    //     e.preventDefault()
+    //     axios.get('http://localhost:8000/destinations',{
+    //         headers: {
+    //             "Authorization": `Bearer ${props.user.token}`
+    //         }
+    //     })
+    //     .then(gaycations => {
+    //         console.log('this is faves', gaycations)
+    //     })
+    // }
 
     return (
         <h1>Your Gaycation Destinations:</h1>

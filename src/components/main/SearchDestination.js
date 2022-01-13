@@ -22,7 +22,12 @@ const SearchDestination = (props) => {
         e.preventDefault()
         // console.log('submitting', inputValue)
         setSubValue(inputValue)
-        axios.get(`http://localhost:8000/destinations/${inputValue}`)
+        axios.get(`http://localhost:8000/destinations/${inputValue}`,
+        {
+            headers: {
+                "Authorization": `Bearer ${props.user.token}`
+            }
+        })
         .then(foundDestinations => {
             // console.log('this is found destinations\n:')
             // for checking
