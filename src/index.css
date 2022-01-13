@@ -120,18 +120,6 @@ code {
   width: 300px;
 }
 
-.footer{
-  margin-top: 1rem;
-  padding: 1rem;
-  background-color: rgba(233, 244, 255, 0.505);
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  text-decoration: underline;
-}
-
 .searchButton{
   padding-top: 2.5%;
   background-color: #E7FBBE;
@@ -169,4 +157,14 @@ code {
   max-width: 650px;
   max-height: 650px;
   padding-bottom: 1%;
+}
+
+.gDestPage {
+  background-color: #E7FBBE;
+  color: #424874;
+  font-family: 'Spline Sans', sans-serif;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 2.5%;
 }

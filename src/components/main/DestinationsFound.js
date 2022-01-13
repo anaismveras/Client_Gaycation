@@ -76,46 +76,34 @@ const DestinationFound = (props) => {
       .catch((err) => console.log(err));
   };
 
-  const handleClick = (e) => {
-    // console.log('what is this', e.target.innerText)
-    let clicked = e.target.innerText
-    axios.get(
-      `http://localhost:8000/destinations/${clicked}`,
-      {
-        headers: {
-          Authorization: `Bearer ${props.user.token}`,
-        },
-      }
-    )
-    .then(clickedCity => {
-        console.log('this city was clicked', clickedCity)
-    })
-  };
+        const mapDestinations = allCityInfo.map((place, i) => {
+            // console.log('this is place', place)
+            if (place.imageUrl) {
+                return (
+                    <div className="favPlace">
+                    {/* <form onSubmit={submitDestination}> */}
+                        <form>
+                    <Link onClick={handleClick} to='/destination-profile/:destinationId'><div class="favPlaceName"><h3>{place.cityName}</h3></div></Link>
+                    <img src={place.imageUrl} alt={place.cityName} className="favPlaceImg" /><br></br>
+                    </form>
+                    <button class="addFavBtn" onClick={() => {saveCity(i)}}>Add to your Gaycations</button>
+                </div>
+                )
+            } else {
+                return (
+                    <div>
+                    <Link to='/destination-profile/:destinationId'><div class="favPlaceName"><h3>{place.cityName}</h3></div></Link>
+                    <p>{place.cityImageId}</p>
+                    <button class="addFavBtn" onClick={() => {saveCity(i)}}>Add to your Gaycations</button>
+                </div>
+                )
+            }
+        })
 
-  const mapDestinations = allCityInfo.map((place, i) => {
-    // console.log('this is place', place)
-    if (place.imageUrl) {
-      return (
-        <div className="favPlace">
-          <Link onClick={handleClick} to="/destination-profile/:destinationId">
-            <div class="favPlaceName">
-              <h3>{place.cityName}</h3>
-            </div>
-          </Link>
-          <img
-            src={place.imageUrl}
-            alt={place.cityName}
-            className="favPlaceImg"
-          />
-          <br></br>
-          <button
-            class="addFavBtn"
-            onClick={() => {
-              saveCity(i);
-            }}
-          >
-            Add to your Gaycations
-          </button>
+    return (
+        <div class="destinations">
+            <br></br><h1><u>Destinations</u></h1>
+            {mapDestinations}
         </div>
       );
     } else {
