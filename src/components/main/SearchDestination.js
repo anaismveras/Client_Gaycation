@@ -3,6 +3,7 @@ import axios from "axios"
 // import apiUrl from "../../apiConfig"
 import DestinationFound from "./DestinationsFound"
 import DestinationProfile from "./DestinationProfile"
+import { useParams } from "react-router-dom"
 
 const SearchDestination = (props) => {
 
@@ -11,8 +12,8 @@ const SearchDestination = (props) => {
     const [subValue, setSubValue] = useState('')
     const [destinationsData, setDestinationsData] = useState([])
     const [destinationsIncluded, setDestinationsIncluded] = useState([])
-    const [cityData, setCityData] = useState([])
-    const [cityIncluded, setCityIncluded] = useState([])
+    // const [cityData, setCityData] = useState([])
+    // const [cityIncluded, setCityIncluded] = useState([])
 
     const handleChange = (e) => {
         // for checking
@@ -53,36 +54,37 @@ const SearchDestination = (props) => {
     // checking code
     // console.log('this is the detinaitionsData', destinationsData)
     // // console.log('this is destinationsIncluded', destinationsIncluded)
-    // console.log('this is destinations', destinations)
+    // console.log('this is destinations', destinations
 
-    const handleClick = (e) => {
-        // do i get whats in the click?
-        // console.log('what is this', e.target.innerText)
-        let clicked = e.target.innerText
-        axios.get(
-          `http://localhost:8000/destinations/${clicked}`,
-          {
-            headers: {
-              Authorization: `Bearer ${props.user.token}`,
-            },
-          }
-        )
-        .then(clickedCity => {
-            // checking what is clickedCity
-            // console.log('this city was clicked', clickedCity)
-            const allCitiesData = []
-            const allCitiesIncluded = []
-            clickedCity.data.data.forEach(item => {
-                allCitiesData.push(item)
-            })
-            clickedCity.data.included.forEach(item => {
-                allCitiesIncluded.push(item)
-            })
-            setCityData(allCitiesData)
-            setCityIncluded(allCitiesIncluded)
-        })
-        .catch(err => console.log(err))
-      }
+    // const handleClick = (e) => {
+    //     // do i get whats in the click?
+    //     // console.log('what is this', e.target)
+    //     console.log('this is clicked', clicked)
+    //     // axios.get(
+    //     //   `http://localhost:8000/destinations/${clicked}`,
+    //     //   {
+    //     //     headers: {
+    //     //       Authorization: `Bearer ${props.user.token}`,
+    //     //     },
+    //     //   }
+    //     // )
+    //     // .then(clickedCity => {
+    //     //     // checking what is clickedCity
+    //     //     // console.log('this city was clicked', clickedCity)
+    //     //     const allCitiesData = []
+    //     //     const allCitiesIncluded = []
+    //     //     clickedCity.data.data.forEach(item => {
+    //     //         allCitiesData.push(item)
+    //     //     })
+    //     //     clickedCity.data.included.forEach(item => {
+    //     //         allCitiesIncluded.push(item)
+    //     //     })
+    //     //     setCityData(allCitiesData)
+    //     //     setCityIncluded(allCitiesIncluded)
+    //     // })
+    //     // .catch(err => console.log(err))
+    //   }
+
 
     return (
         <div className="searchButton">
@@ -95,9 +97,6 @@ const SearchDestination = (props) => {
                 destinationsData={destinationsData} 
                 destinationsIncluded={destinationsIncluded} 
                 user={props.user}
-                handleClick={handleClick}
-                cityData={cityData}
-                cityInclude={cityIncluded}
                 />
         </div>
     )
