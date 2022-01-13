@@ -1,5 +1,6 @@
 import React from 'react'
 // import noImage from '../images/main/noImage.jpeg'
+import axios from 'axios'
 
 const DestinationFound = (props) => {
 
@@ -13,19 +14,26 @@ const DestinationFound = (props) => {
         if (item.relationships) {
             // console.log('featured image id', item.relationships.featured_photo.data)
             if (item.relationships.featured_photo.data != null) {
-                // console.log('this is the image id',item.relationships.featured_photo.data.id)
                 builtDestinationsCityInfo.push(
-                    {cityImageId: item.relationships.featured_photo.data.id,
-                    cityName: item.attributes.long_name})
+                    {
+                        cityImageId: item.relationships.featured_photo.data.id,
+                        cityName: item.attributes.long_name,
+                        cityId: item.id,
+                        cityCountry: item.attributes.name,
+                        cityDescription: item.attributes.destination_type,
+                    })
             } else {
                 // console.log('there is not image found')
                 builtDestinationsCityInfo.push({
+                    cityImageId: "There is no image for this city",
                     cityName: item.attributes.long_name,
-                    cityImageId: "There is no image for this city"
+                    cityId: item.id,
+                    cityCountry: item.attributes.name,
+                    cityDescription: item.attributes.destination_type,
                 })
             }
         } else if (item.type == 'photo') {
-            console.log('this is the image url', item.id)
+            // console.log('this is the image url', item.id)
             builtDestinationsImageInfo.push( 
                 {
                     imageUrl:item.attributes.image.large,
@@ -48,22 +56,35 @@ const DestinationFound = (props) => {
         })
         // console.log('this is everything', allCityInfo)
 
-        const mapDestinations = allCityInfo.map(place => {
-            // console.log('this is place', place)
+        const saveCity = (place) => {
+            // console.log('place', allCityInfo[place].imageUrl)
+            axios.post(`http://localhost:8000/destinations`, {
+                body: allCityInfo[place],
+                image: allCityInfo[place].imageUrl
+            },
+            {
+                headers: {
+                    "Authorization": `Bearer ${props.user.token}`
+                }
+            })
+        }
+
+        const mapDestinations = allCityInfo.map((place, i) => {
+            console.log('this is place', place)
             if (place.imageUrl) {
                 return (
                 <div>
                     <h1>{place.cityName}</h1>
                     <img src={place.imageUrl} alt={place.cityName} />
-                    <button onClick={props.addToGaycation}>Add to your Gaycations</button>
+                    <button onClick={() => {saveCity(i)}}>Add to your Gaycations</button>
                 </div>
                 )
             } else {
                 return (
                     <div>
                     <h1>{place.cityName}</h1>
-                    {/* <img src={noImage} alt=""/> */}
-                    <button onClick={props.addToGaycation}>Add to your Gaycations</button>
+                    <p>{place.cityImageId}</p>
+                    <button onClick={() => {saveCity(i)}}>Add to your Gaycations</button>
                 </div>
                 )
             }

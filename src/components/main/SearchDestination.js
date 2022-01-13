@@ -1,5 +1,4 @@
-import { useState } from "react"
-import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from "react"
 import axios from "axios"
 // import apiUrl from "../../apiConfig"
 import DestinationFound from "./DestinationsFound"
@@ -10,7 +9,11 @@ const SearchDestination = (props) => {
     const [subValue, setSubValue] = useState('')
     const [destinationsData, setDestinationsData] = useState([])
     const [destinationsIncluded, setDestinationsIncluded] = useState([])
-    // const [allDestinationsInfo, setAllDestinationsInfo] = useState([])
+    const [destinations, setDestinations] = useState([])
+    // const [likedDestinations, setLikedDestinations] = useState({
+    //     city: ''
+    // })
+
     const handleChange = (e) => {
         // for checking
         // console.log('this is what im writing', inputValue)
@@ -35,15 +38,38 @@ const SearchDestination = (props) => {
                 allDestinationsIncluded.push(item)
             })
             setDestinationsData(allDestinationsData)
+            // console.log('this is the data.attribute', allDestinationsData)
             setDestinationsIncluded(allDestinationsIncluded)
         })
         .catch(err => console.log(err))
     }
 
-    const addToGaycation = () => {
-        
-    }
+    console.log('this is the detinaitionsData', destinationsData)
+    // console.log('this is destinationsIncluded', destinationsIncluded)
 
+    console.log('this is destinations', destinations)
+
+    const cityInfo = destinationsData.map(item => {
+        // console.log('this is item', item.attributes.long_name
+        return {cityName: item.attributes.long_name}
+    })
+
+    // const handleButton = (e) => {
+    //     console.log('this is e', e)
+    //     // e.target.
+    // }
+
+    // const addToGaycation = () => {
+
+    //     axios.post(`http://localhost:8000/destinations`, {
+    //          city: cityInfo.cityName
+    //     }, 
+    //     {
+    //         headers: {
+    //             "Authorization": `Bearer ${props.user.token}`
+    //         }
+    //     })
+    // }
     return (
         <div>
             <form onSubmit={submitDestination}>
@@ -54,6 +80,8 @@ const SearchDestination = (props) => {
                 <DestinationFound 
                 destinationsData={destinationsData} 
                 destinationsIncluded={destinationsIncluded} 
+                // addToGaycation={handleButton}
+                user={props.user}
                 />
         </div>
     )
