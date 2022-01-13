@@ -46,9 +46,8 @@ const DestinationFound = (props) => {
     // console.log('this is image array', builtDestinationsImageInfo)
 
         const allCityInfo = builtDestinationsCityInfo.map((e) => {
-            // console.log('this is item', item)
             let temp = builtDestinationsImageInfo.find(element => element.cityImageId === e.cityImageId)
-            // console.log('this is temp', temp)
+            console.log('this is temp', temp)
                 if (temp) {
                     e.imageUrl = temp.imageUrl
                 } 
@@ -57,16 +56,15 @@ const DestinationFound = (props) => {
         // console.log('this is everything', allCityInfo)
 
         const saveCity = (place) => {
-            // console.log('place', allCityInfo[place].imageUrl)
-            axios.post(`http://localhost:8000/destinations`, {
-                body: allCityInfo[place],
-                image: allCityInfo[place].imageUrl
-            },
-            {
-                headers: {
-                    "Authorization": `Bearer ${props.user.token}`
-                }
-            })
+            console.log('place', allCityInfo[place])
+                axios.post(`http://localhost:8000/destinations`, {
+                    body: allCityInfo[place]
+                },
+                {
+                    headers: {
+                        "Authorization": `Bearer ${props.user.token}`
+                    }
+                })
         }
 
         const mapDestinations = allCityInfo.map((place, i) => {
