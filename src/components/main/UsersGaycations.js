@@ -4,7 +4,6 @@ const UsersGaycations = (props) => {
     
     const mapGaycations = props.gaycations.map(place => {
         // console.log('this is place', place)
-        if ()
         return (
             <div>
                 <h1>{place.city}</h1>

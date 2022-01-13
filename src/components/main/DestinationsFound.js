@@ -73,26 +73,26 @@ const DestinationFound = (props) => {
             console.log('this is place', place)
             if (place.imageUrl) {
                 return (
-                <div>
-                    <h1>{place.cityName}</h1>
-                    <img src={place.imageUrl} alt={place.cityName} />
-                    <button onClick={() => {saveCity(i)}}>Add to your Gaycations</button>
+                    <div className="favPlace">
+                    <div class="favPlaceName"><h3>{place.cityName}</h3></div>
+                    <img src={place.imageUrl} alt={place.cityName} className="favPlaceImg" /><br></br>
+                    <button class="addFavBtn" onClick={() => {saveCity(i)}}>Add to your Gaycations</button>
                 </div>
                 )
             } else {
                 return (
                     <div>
-                    <h1>{place.cityName}</h1>
+                    <h3>{place.cityName}</h3>
                     <p>{place.cityImageId}</p>
                     <button onClick={() => {saveCity(i)}}>Add to your Gaycations</button>
-                </div>
+                    </div>
                 )
             }
         })
 
     return (
-        <div>
-            <h1>Destinations:</h1>
+        <div class="destinations">
+            <br></br><h1>Destinations:</h1>
             {mapDestinations}
         </div>
     )
