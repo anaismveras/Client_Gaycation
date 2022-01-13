@@ -1,4 +1,3 @@
-import './Home.css'
 import gaycation from '../images/gaycation.png'
 import { Link } from 'react-router-dom'
 

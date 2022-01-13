@@ -54,11 +54,11 @@ const SearchDestination = (props) => {
     // console.log('this is destinations', destinations)
 
     return (
-        <div>
+        <div className="searchButton">
             <form onSubmit={submitDestination}>
-                <label htmlFor="destinationName">Destination Name:</label>
-                <input type="text" onChange={handleChange} />
-                <input type="submit" />
+                <label htmlFor="destinationName"></label>
+                <input type="text" className="searchBar" placeholder="Search  by  City,  State,  or  Country" onChange={handleChange} />
+                <input type="submit" className="submitButton" />
             </form>
                 <DestinationFound 
                 destinationsData={destinationsData} 
