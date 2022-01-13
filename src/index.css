@@ -8,6 +8,43 @@ code {
     monospace;
 }
 
+html {
+  background-color: #E7FBBE;
+}
+
+.homePage {
+  font-family: 'Spline Sans', sans-serif;
+  font-size:xx-large;
+  background-color: #E7FBBE;
+  color: #424874;
+  /* color: #e7f1aeed; */
+  padding-top: 2%;
+  padding-left: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+}
+
+.homeImg {
+  max-height: 80%;
+  max-width: 80%;
+  padding-top: 10%;
+  padding-right: 5%;
+}
+
+#homePageBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  font-size: medium;
+}
+
 .signInPage, .signUpPage, .signOutPage, .changePasswordPage {
   background-image: url(../src/images/flag.jpeg);
   background-size: cover;
@@ -89,7 +126,8 @@ code {
 .footer{
   margin-top: 1rem;
   padding: 1rem;
-  background-color: #f1fbdc;
+  background-color: rgba(233, 244, 255, 0.505);
+  /* background-color: #fffdde86; */
   position: fixed;
   bottom: 0;
   left: 0;
