@@ -5,14 +5,11 @@ import DestinationFound from "./DestinationsFound"
 
 const SearchDestination = (props) => {
 
+    // All states
     const [inputValue, setInputValue] = useState('')
     const [subValue, setSubValue] = useState('')
     const [destinationsData, setDestinationsData] = useState([])
     const [destinationsIncluded, setDestinationsIncluded] = useState([])
-    const [destinations, setDestinations] = useState([])
-    // const [likedDestinations, setLikedDestinations] = useState({
-    //     city: ''
-    // })
 
     const handleChange = (e) => {
         // for checking
@@ -20,11 +17,17 @@ const SearchDestination = (props) => {
         setInputValue(e.target.value)
     }
 
+    // calling backend RoatGoat API to get cities
     const submitDestination = (e) => {
         e.preventDefault()
         // console.log('submitting', inputValue)
         setSubValue(inputValue)
-        axios.get(`http://localhost:8000/destinations/${inputValue}`)
+        axios.get(`http://localhost:8000/destinations/${inputValue}`,
+        {
+            headers: {
+                "Authorization": `Bearer ${props.user.token}`
+            }
+        })
         .then(foundDestinations => {
             // console.log('this is found destinations\n:')
             // for checking
@@ -44,32 +47,12 @@ const SearchDestination = (props) => {
         .catch(err => console.log(err))
     }
 
-    console.log('this is the detinaitionsData', destinationsData)
-    // console.log('this is destinationsIncluded', destinationsIncluded)
+    // checking code
+    // console.log('this is the detinaitionsData', destinationsData)
+    // // console.log('this is destinationsIncluded', destinationsIncluded)
 
-    console.log('this is destinations', destinations)
+    // console.log('this is destinations', destinations)
 
-    const cityInfo = destinationsData.map(item => {
-        // console.log('this is item', item.attributes.long_name
-        return {cityName: item.attributes.long_name}
-    })
-
-    // const handleButton = (e) => {
-    //     console.log('this is e', e)
-    //     // e.target.
-    // }
-
-    // const addToGaycation = () => {
-
-    //     axios.post(`http://localhost:8000/destinations`, {
-    //          city: cityInfo.cityName
-    //     }, 
-    //     {
-    //         headers: {
-    //             "Authorization": `Bearer ${props.user.token}`
-    //         }
-    //     })
-    // }
     return (
         <div>
             <form onSubmit={submitDestination}>
