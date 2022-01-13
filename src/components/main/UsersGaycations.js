@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // import React from "react"
 // import { useEffect } from "react"
 
@@ -39,36 +38,3 @@
 // }
 
 // export default UsersGaycations
-=======
-import React from "react"
-import { useState } from "react"
-import axios from "axios"
-
-
-
-const UsersGaycations = (props) => {
-    
-    const [gaycations, setGaycations] = useState([])
-
-    const getGaycations = (e) => {
-        e.preventDefault()
-        axios.get('http://localhost:8000/destinations',{
-            headers: {
-                "Authorization": `Bearer ${props.user.token}`
-            }
-        })
-        .then(gaycations => {
-            console.log('this is faves', gaycations)
-        })
-    }
-
-    return (
-        <h1>Your Gaycation Destinations:</h1>
-    )
-
-
-
-}
-
-export default UsersGaycations
->>>>>>> d161d4d24d83b87d98710df3c6624734a5172a16
