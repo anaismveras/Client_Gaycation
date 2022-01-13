@@ -1,7 +1,8 @@
 // import React, { Component, Fragment } from 'react'
-import React, { useState, Fragment } from 'react'
+import React, { useState, Fragment, useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
+import axios from 'axios'
 
 // import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
 import AutoDismissAlert from './components/shared/AutoDismissAlert/AutoDismissAlert'
@@ -14,7 +15,7 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import SearchDestination from './components/main/SearchDestination'
-// import UsersGaycations from './components/main/UsersGaycations'
+import UsersGaycations from './components/main/UsersGaycations'
 import Contact from './components/Contact'
 // import apiUrl from './apiConfig'
 
@@ -22,6 +23,7 @@ const App = () => {
 
 	const [user, setUser] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
+	const [gaycations, setGaycations] = useState([])
 
 	console.log('user in app', user)
 	console.log('message alerts', msgAlerts)
@@ -44,6 +46,24 @@ const App = () => {
 			)
 		})
 	}
+
+	const getGaycations = () => {
+		if (user !== null) {
+			axios.get('http://localhost:8000/destinations',{
+				headers: {
+					"Authorization": `Bearer ${user.token}`
+				}
+			})
+			.then(foundGaycations => {
+				console.log('this is faves', foundGaycations)
+				setGaycations(foundGaycations)
+			})
+		}
+    }
+
+	useEffect(() => {
+		getGaycations()
+	}, [user])
 
 	return (
 		<Fragment>
@@ -91,17 +111,19 @@ const App = () => {
 						</RequireAuth>
 					}
 				/>
-				{/* <Route
+				<Route
 					path='/gaycation-profile'
 					element={
 						<RequireAuth user={user}>
 							<UsersGaycations
 								user={user}
 								msgAlert={msgAlert}
+								gaycations={gaycations.data}
+								getGaycations={getGaycations}
 							/>
 						</RequireAuth>
 					}
-				/> */}
+				/>
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert

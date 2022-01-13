@@ -1,27 +1,24 @@
 import React from "react"
-import { useState } from "react"
-import axios from "axios"
 
-
-
-const UsersGaycations = () => {
+const UsersGaycations = (props) => {
     
-    const [gaycations, setGaycations] = useState([])
-
-    // const getGaycations = (e) => {
-    //     e.preventDefault()
-    //     axios.get('http://localhost:8000/destinations',{
-    //         headers: {
-    //             "Authorization": `Bearer ${props.user.token}`
-    //         }
-    //     })
-    //     .then(gaycations => {
-    //         console.log('this is faves', gaycations)
-    //     })
-    // }
+    const mapGaycations = props.gaycations.map(place => {
+        // console.log('this is place', place)
+        if ()
+        return (
+            <div>
+                <h1>{place.city}</h1>
+                <img src={place.image_url} alt={place.city} />
+            </div>
+        )
+    })
 
     return (
-        <h1>Your Gaycation Destinations:</h1>
+        <div>
+            <h1>Your Gaycation Destinations:</h1>
+            {mapGaycations}
+        </div>
+        
     )
 
 
