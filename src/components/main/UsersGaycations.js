@@ -38,7 +38,7 @@ const UsersGaycations = (props) => {
         } else {
             return (
                 // add an onsubmit(handledelete)
-                <form >
+                <form>
                     <h1>{place.city}</h1>
                     <img src={place.image_url} alt={place.city} />
                     <input type="Submit" value="Delete Gaycation"/>

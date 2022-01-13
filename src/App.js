@@ -53,28 +53,6 @@ const App = () => {
 		})
 	}
 
-	// -----------  FOR USERGAYCATIONS.JS --------------- //
-	// call API to get gaycations in db
-	// const getGaycations = () => {
-	// 	if (user !== null) {
-	// 		axios.get('http://localhost:8000/destinations',{
-	// 			headers: {
-	// 				"Authorization": `Bearer ${user.token}`
-	// 			}
-	// 		})
-	// 		.then(foundGaycations => {
-	// 			// console.log('this is faves', foundGaycations)
-	// 			setGaycations(foundGaycations)
-	// 		})
-	// 	}
-    // }
-
-	// // recall the API whenever a user signs in and whenever a user added it to gaycations
-	// useEffect(() => {
-	// 	getGaycations()
-	// }, [user])
-
-
 	return (
 		<Fragment>
 			{/* Auth Routes */}
@@ -135,7 +113,7 @@ const App = () => {
 					}
 				/>
 				<Route
-					path='/destination-profile'
+					path='/destination-profile/:destinationId'
 					element={
 						<RequireAuth user={user}>
 							<DestinationProfile

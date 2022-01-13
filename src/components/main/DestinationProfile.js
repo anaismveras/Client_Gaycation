@@ -3,7 +3,11 @@ import axios from "axios"
 
 
 const DestinationProfile = (props) => {
-    return console.log('this is not it', props.destinationsData)
+
+
+    return (
+        <h1>Gaycation:</h1>
+    )
 }
 
 export default DestinationProfile

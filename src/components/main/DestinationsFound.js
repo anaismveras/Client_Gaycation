@@ -2,8 +2,16 @@ import React from 'react'
 // import noImage from '../images/main/noImage.jpeg'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 const DestinationFound = (props) => {
+
+    // useStates
+    const [linkInfo, setLinkInfo] = useState('')
+    const [subLinkInfo, setSubLinkInfo] = useState('')
+    const [destinationsData, setDestinationsData] = useState([])
+    const [destinationsIncluded, setDestinationsIncluded] = useState([])
+
 
     const builtDestinationsCityInfo = []
     const builtDestinationsImageInfo = []
@@ -69,20 +77,33 @@ const DestinationFound = (props) => {
                 .then()
         }
 
+        // --------- getting the destination from API based on link name---//
+        const handleClick = (e) => {
+            setLinkInfo(e.target)
+        }
+
+
+        const submitDestination = (e) => {
+            e.preventDefault()
+            console.log('submiting',linkInfo)
+        }
+
         const mapDestinations = allCityInfo.map((place, i) => {
             // console.log('this is place', place)
             if (place.imageUrl) {
                 return (
                     <div className="favPlace">
-                    <Link to='/destination-profile'><div class="favPlaceName"><h3>{place.cityName}</h3></div></Link>
+                    <form onSubmit={submitDestination}>
+                    <Link onClick={handleClick} to='/destination-profile/:destinationId'><div class="favPlaceName"><h3>{place.cityName}</h3></div></Link>
                     <img src={place.imageUrl} alt={place.cityName} className="favPlaceImg" /><br></br>
+                    </form>
                     <button class="addFavBtn" onClick={() => {saveCity(i)}}>Add to your Gaycations</button>
                 </div>
                 )
             } else {
                 return (
                     <div>
-                    <Link to='/destination-profile'><div class="favPlaceName"><h3>{place.cityName}</h3></div></Link>
+                    <Link to='/destination-profile/:destinationId'><div class="favPlaceName"><h3>{place.cityName}</h3></div></Link>
                     <p>{place.cityImageId}</p>
                     <button class="addFavBtn" onClick={() => {saveCity(i)}}>Add to your Gaycations</button>
                 </div>
