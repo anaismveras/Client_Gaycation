@@ -74,8 +74,7 @@ const DestinationFound = (props) => {
         }
       )
       .catch((err) => console.log(err));
-  };
-
+  }
         const mapDestinations = allCityInfo.map((place, i) => {
             // console.log('this is place', place)
             if (place.imageUrl) {
