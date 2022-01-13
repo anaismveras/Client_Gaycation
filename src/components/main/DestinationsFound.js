@@ -82,12 +82,6 @@ const DestinationFound = (props) => {
             setLinkInfo(e.target)
         }
 
-
-        const submitDestination = (e) => {
-            e.preventDefault()
-            console.log('submiting',linkInfo)
-        }
-
         const mapDestinations = allCityInfo.map((place, i) => {
             // console.log('this is place', place)
             if (place.imageUrl) {
