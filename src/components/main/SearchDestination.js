@@ -11,6 +11,8 @@ const SearchDestination = (props) => {
     const [subValue, setSubValue] = useState('')
     const [destinationsData, setDestinationsData] = useState([])
     const [destinationsIncluded, setDestinationsIncluded] = useState([])
+    const [cityData, setCityData] = useState([])
+    const [cityIncluded, setCityIncluded] = useState([])
 
     const handleChange = (e) => {
         // for checking
@@ -51,7 +53,6 @@ const SearchDestination = (props) => {
     // checking code
     // console.log('this is the detinaitionsData', destinationsData)
     // // console.log('this is destinationsIncluded', destinationsIncluded)
-
     // console.log('this is destinations', destinations)
 
     const handleClick = (e) => {
@@ -69,9 +70,19 @@ const SearchDestination = (props) => {
         .then(clickedCity => {
             // checking what is clickedCity
             // console.log('this city was clicked', clickedCity)
+            const allCitiesData = []
+            const allCitiesIncluded = []
+            clickedCity.data.data.forEach(item => {
+                allCitiesData.push(item)
+            })
+            clickedCity.data.included.forEach(item => {
+                allCitiesIncluded.push(item)
+            })
+            setCityData(allCitiesData)
+            setCityIncluded(allCitiesIncluded)
         })
         .catch(err => console.log(err))
-      };
+      }
 
     return (
         <div className="searchButton">
@@ -85,12 +96,9 @@ const SearchDestination = (props) => {
                 destinationsIncluded={destinationsIncluded} 
                 user={props.user}
                 handleClick={handleClick}
+                cityData={cityData}
+                cityInclude={cityIncluded}
                 />
-                {/* <DestinationProfile 
-                destinationsData={destinationsData} 
-                destinationsIncluded={destinationsIncluded} 
-                user={props.user}
-                /> */}
         </div>
     )
 }

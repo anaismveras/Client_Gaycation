@@ -147,6 +147,9 @@ code {
 .favPlace {
   padding-top: 2%;
   padding-bottom: 2%;
+  /* max-width: 850px;
+  max-height: 850px; */
+
 }
 
 .favPlaceName {
@@ -156,10 +159,12 @@ code {
 .favPlaceImg {
   max-width: 650px;
   max-height: 650px;
-  padding-bottom: 1%;
+  border-radius: 5%;
+  margin-top: .5%;
+  margin-bottom: 1.5%;
 }
 
-.gDestPage {
+.gDestPage, .desProfPage {
   background-color: #E7FBBE;
   color: #424874;
   font-family: 'Spline Sans', sans-serif;
