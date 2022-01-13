@@ -54,6 +54,25 @@ const SearchDestination = (props) => {
 
     // console.log('this is destinations', destinations)
 
+    const handleClick = (e) => {
+        // do i get whats in the click?
+        // console.log('what is this', e.target.innerText)
+        let clicked = e.target.innerText
+        axios.get(
+          `http://localhost:8000/destinations/${clicked}`,
+          {
+            headers: {
+              Authorization: `Bearer ${props.user.token}`,
+            },
+          }
+        )
+        .then(clickedCity => {
+            // checking what is clickedCity
+            // console.log('this city was clicked', clickedCity)
+        })
+        .catch(err => console.log(err))
+      };
+
     return (
         <div className="searchButton">
             <form onSubmit={submitDestination}>
@@ -65,6 +84,7 @@ const SearchDestination = (props) => {
                 destinationsData={destinationsData} 
                 destinationsIncluded={destinationsIncluded} 
                 user={props.user}
+                handleClick={handleClick}
                 />
                 {/* <DestinationProfile 
                 destinationsData={destinationsData} 
