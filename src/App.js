@@ -22,7 +22,9 @@ const App = () => {
 
 	const [user, setUser] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
+	// gaycations states
 	const [gaycations, setGaycations] = useState([])
+
 
 	console.log('user in app', user)
 	console.log('message alerts', msgAlerts)
@@ -46,6 +48,8 @@ const App = () => {
 		})
 	}
 
+	// ----------- FOR USERGAYCATIONS.JS --------------- //
+	// call API to get gaycations in db
 	const getGaycations = () => {
 		if (user !== null) {
 			axios.get('http://localhost:8000/destinations',{
@@ -60,9 +64,26 @@ const App = () => {
 		}
     }
 
+	// recall the API whenever a user signs in and whenever a user added it to gaycations
 	useEffect(() => {
 		getGaycations()
 	}, [user, gaycations])
+
+
+	// ----------- FOR DESTINATIONSPROFILE.JS --------------- //
+	// const getDestinationInfo = () => {
+	// 	if (user !== null) {
+	// 		axios.get('http://localhost:8000/destinations',{
+	// 			headers: {
+	// 				"Authorization": `Bearer ${user.token}`
+	// 			}
+	// 		})
+	// 		.then(foundGaycations => {
+	// 			setGaycations(foundGaycations)
+	// 		})
+	// 	}
+	// }
+	// }
 
 	return (
 		<Fragment>
@@ -119,6 +140,17 @@ const App = () => {
 								msgAlert={msgAlert}
 								gaycations={gaycations.data}
 								getGaycations={getGaycations}
+							/>
+						</RequireAuth>
+					}
+				/>
+				<Route
+					path='/destination-profile'
+					element={
+						<RequireAuth user={user}>
+							<UsersGaycations
+								user={user}
+								msgAlert={msgAlert}
 							/>
 						</RequireAuth>
 					}

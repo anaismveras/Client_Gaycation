@@ -1,10 +1,6 @@
-import axios from "axios"
 import React from "react"
-import { useEffect, Link, useState } from "react"
 
 const UsersGaycations = (props) => {
-
-
 
     const mapGaycations = props.gaycations.map(place => {
         // console.log('this is place length', place.image_url)
