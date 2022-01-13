@@ -14,15 +14,22 @@ const DestinationFound = (props) => {
         if (item.relationships) {
             // console.log('featured image id', item.relationships.featured_photo.data)
             if (item.relationships.featured_photo.data != null) {
-                // console.log('this is the image id',item.relationships.featured_photo.data.id)
                 builtDestinationsCityInfo.push(
-                    {cityImageId: item.relationships.featured_photo.data.id,
-                    cityName: item.attributes.long_name})
+                    {
+                        cityImageId: item.relationships.featured_photo.data.id,
+                        cityName: item.attributes.long_name,
+                        cityId: item.id,
+                        cityCountry: item.attributes.name,
+                        cityDescription: item.attributes.destination_type,
+                    })
             } else {
                 // console.log('there is not image found')
                 builtDestinationsCityInfo.push({
+                    cityImageId: "There is no image for this city",
                     cityName: item.attributes.long_name,
-                    cityImageId: "There is no image for this city"
+                    cityId: item.id,
+                    cityCountry: item.attributes.name,
+                    cityDescription: item.attributes.destination_type,
                 })
             }
         } else if (item.type == 'photo') {
@@ -47,28 +54,14 @@ const DestinationFound = (props) => {
                 } 
                 return e
         })
-        console.log('this is everything', allCityInfo)
-
-    //     const handleButton = () => {
-    //         console.log('this is e', e.target)
-    //     }
-
-    //     const addToGaycation = () => {
-    //     axios.post(`http://localhost:8000/destinations`, {
-    //         //  city: cityInfo.cityName
-    //     }, 
-    //     {
-    //         headers: {
-    //             "Authorization": `Bearer ${props.user.token}`
-    //         }
-    //     })
-    // }
+        // console.log('this is everything', allCityInfo)
 
         const saveCity = (place) => {
-            // console.log(allCityInfo[place])
+            // console.log('place', allCityInfo[place].imageUrl)
             axios.post(`http://localhost:8000/destinations`, {
-                body: allCityInfo[place]
-            }, 
+                body: allCityInfo[place],
+                image: allCityInfo[place].imageUrl
+            },
             {
                 headers: {
                     "Authorization": `Bearer ${props.user.token}`
@@ -77,7 +70,7 @@ const DestinationFound = (props) => {
         }
 
         const mapDestinations = allCityInfo.map((place, i) => {
-            // console.log('this is place', place)
+            console.log('this is place', place)
             if (place.imageUrl) {
                 return (
                 <div>
@@ -90,7 +83,7 @@ const DestinationFound = (props) => {
                 return (
                     <div>
                     <h1>{place.cityName}</h1>
-                    {/* <img src={noImage} alt=""/> */}
+                    <p>{place.cityImageId}</p>
                     <button onClick={() => {saveCity(i)}}>Add to your Gaycations</button>
                 </div>
                 )
