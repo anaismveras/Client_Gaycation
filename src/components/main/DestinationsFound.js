@@ -87,7 +87,8 @@ const DestinationFound = (props) => {
             if (place.imageUrl) {
                 return (
                     <div className="favPlace">
-                    <form onSubmit={submitDestination}>
+                    {/* <form onSubmit={submitDestination}> */}
+                        <form>
                     <Link onClick={handleClick} to='/destination-profile/:destinationId'><div class="favPlaceName"><h3>{place.cityName}</h3></div></Link>
                     <img src={place.imageUrl} alt={place.cityName} className="favPlaceImg" /><br></br>
                     </form>
@@ -107,7 +108,7 @@ const DestinationFound = (props) => {
 
     return (
         <div class="destinations">
-            <br></br><h1>Destinations:</h1>
+            <br></br><h1><u>Destinations</u></h1>
             {mapDestinations}
         </div>
     )
