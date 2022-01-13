@@ -71,19 +71,19 @@ const App = () => {
 
 
 	// ----------- FOR DESTINATIONSPROFILE.JS --------------- //
-	// const getDestinationInfo = () => {
-	// 	if (user !== null) {
-	// 		axios.get('http://localhost:8000/destinations',{
-	// 			headers: {
-	// 				"Authorization": `Bearer ${user.token}`
-	// 			}
-	// 		})
-	// 		.then(foundGaycations => {
-	// 			setGaycations(foundGaycations)
-	// 		})
-	// 	}
-	// }
-	// }
+	const getDestinationInfo = () => {
+		if (user !== null) {
+			axios.get(`http://localhost:8000/destinations/${}`,{
+				headers: {
+					"Authorization": `Bearer ${user.token}`
+				}
+			})
+			.then(foundGaycations => {
+				setGaycations(foundGaycations)
+			})
+		}
+	}
+	}
 
 	return (
 		<Fragment>

@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const DestinationFound = (props) => {
-    
+
     const builtDestinationsCityInfo = []
     const builtDestinationsImageInfo = []
     const allInfo = props.destinationsData.concat(props.destinationsIncluded)
@@ -75,7 +75,7 @@ const DestinationFound = (props) => {
             if (place.imageUrl) {
                 return (
                     <div className="favPlace">
-                    <div class="favPlaceName"><h3>{place.cityName}</h3></div>
+                    <Link to='destination-profile'><div class="favPlaceName"><h3>{place.cityName}</h3></div></Link>
                     <img src={place.imageUrl} alt={place.cityName} className="favPlaceImg" /><br></br>
                     <button class="addFavBtn" onClick={() => {saveCity(i)}}>Add to your Gaycations</button>
                 </div>
@@ -83,7 +83,7 @@ const DestinationFound = (props) => {
             } else {
                 return (
                     <div>
-                    <div class="favPlaceName"><h3>{place.cityName}</h3></div>
+                    <Link to='destination-profile'><div class="favPlaceName"><h3>{place.cityName}</h3></div></Link>
                     <p>{place.cityImageId}</p>
                     <button class="addFavBtn" onClick={() => {saveCity(i)}}>Add to your Gaycations</button>
                 </div>
