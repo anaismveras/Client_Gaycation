@@ -76,21 +76,21 @@ const DestinationFound = (props) => {
       .catch((err) => console.log(err));
   };
 
-  const handleClick = (e) => {
-    // console.log('what is this', e.target.innerText)
-    let clicked = e.target.innerText
-    axios.get(
-      `http://localhost:8000/destinations/${clicked}`,
-      {
-        headers: {
-          Authorization: `Bearer ${props.user.token}`,
-        },
-      }
-    )
-    .then(clickedCity => {
-        console.log('this city was clicked', clickedCity)
-    })
-  };
+//   const handleClick = (e) => {
+//     // console.log('what is this', e.target.innerText)
+//     let clicked = e.target.innerText
+//     axios.get(
+//       `http://localhost:8000/destinations/${clicked}`,
+//       {
+//         headers: {
+//           Authorization: `Bearer ${props.user.token}`,
+//         },
+//       }
+//     )
+//     .then(clickedCity => {
+//         console.log('this city was clicked', clickedCity)
+//     })
+//   };
 
   const mapDestinations = allCityInfo.map((place, i) => {
     // console.log('this is place', place)
