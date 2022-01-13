@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "react"
 
 const UsersGaycations = (props) => {
 

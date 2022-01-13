@@ -2,10 +2,10 @@ import React from 'react'
 // import noImage from '../images/main/noImage.jpeg'
 import axios from 'axios'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const DestinationFound = (props) => {
-
-    const [likedGaycations, setLikedGaycations] = useState({})
+    
     const builtDestinationsCityInfo = []
     const builtDestinationsImageInfo = []
     const allInfo = props.destinationsData.concat(props.destinationsIncluded)
