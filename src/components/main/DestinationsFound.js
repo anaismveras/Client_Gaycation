@@ -80,10 +80,10 @@ const DestinationFound = (props) => {
             } else {
                 return (
                     <div>
-                    <h3>{place.cityName}</h3>
+                    <div class="favPlaceName"><h3>{place.cityName}</h3></div>
                     <p>{place.cityImageId}</p>
-                    <button onClick={() => {saveCity(i)}}>Add to your Gaycations</button>
-                    </div>
+                    <button class="addFavBtn" onClick={() => {saveCity(i)}}>Add to your Gaycations</button>
+                </div>
                 )
             }
         })
