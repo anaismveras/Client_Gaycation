@@ -24,7 +24,6 @@ const UsersGaycations = (props) => {
         getGaycations()
     }, [])
 
-
     const mapGaycations = gaycations.map(place => {
         if (place.image_url.length === 31) {
             return (

@@ -83,7 +83,7 @@ const DestinationFound = (props) => {
                     <div className="favPlace">
                     {/* <form onSubmit={submitDestination}> */}
                         <form>
-                    <Link onClick={handleClick} to='/destination-profile/:destinationId'><div class="favPlaceName"><h3>{place.cityName}</h3></div></Link>
+                    <Link to='/destination-profile/:destinationId'><div class="favPlaceName"><h3>{place.cityName}</h3></div></Link>
                     <img src={place.imageUrl} alt={place.cityName} className="favPlaceImg" /><br></br>
                     </form>
                     <button class="addFavBtn" onClick={() => {saveCity(i)}}>Add to your Gaycations</button>
@@ -105,36 +105,7 @@ const DestinationFound = (props) => {
             <br></br><h1><u>Destinations</u></h1>
             {mapDestinations}
         </div>
-      );
-    } else {
-      return (
-        <div>
-          <Link to="/destination-profile/:destinationId">
-            <div class="favPlaceName">
-              <h3>{place.cityName}</h3>
-            </div>
-          </Link>
-          <p>{place.cityImageId}</p>
-          <button
-            class="addFavBtn"
-            onClick={() => {
-              saveCity(i);
-            }}
-          >
-            Add to your Gaycations
-          </button>
-        </div>
-      );
-    }
-  });
-
-  return (
-    <div class="destinations">
-      <br></br>
-      <h1>Destinations:</h1>
-      {mapDestinations}
-    </div>
-  );
+  )
 };
 
 export default DestinationFound;
