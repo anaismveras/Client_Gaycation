@@ -47,6 +47,7 @@ const SearchDestination = (props) => {
     // // console.log('this is destinationsIncluded', destinationsIncluded)
 
     // console.log('this is destinations', destinations)
+    // this isnt working
 
     return (
         <div>
