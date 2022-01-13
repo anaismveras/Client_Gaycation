@@ -106,8 +106,6 @@ const App = () => {
 							<UsersGaycations
 								user={user}
 								msgAlert={msgAlert}
-								// gaycations={gaycations.data}
-								// getGaycations={getGaycations}
 							/>
 						</RequireAuth>
 					}
