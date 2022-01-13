@@ -1,15 +1,12 @@
 html {
   margin: 0;
   font-family: 'Spline Sans', sans-serif;
+  background-color: #E7FBBE;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-html {
-  background-color: #E7FBBE;
 }
 
 .homePage {
@@ -127,11 +124,49 @@ html {
   margin-top: 1rem;
   padding: 1rem;
   background-color: rgba(233, 244, 255, 0.505);
-  /* background-color: #fffdde86; */
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   text-align: center;
   text-decoration: underline;
+}
+
+.searchButton{
+  padding-top: 2.5%;
+  background-color: #E7FBBE;
+  font-family: 'Spline Sans', sans-serif;
+  font-size: small;
+  color: #424874;
+  text-align: center;
+}
+
+.searchBar {
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  gap: 10px;
+  width: 30%;
+}
+
+.submitButton {
+  margin-left: .5%;
+}
+.destinations {
+  padding-top: 2.5%;
+}
+
+.favPlace {
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.favPlaceName {
+  padding-top: 2%;
+}
+
+.favPlaceImg {
+  max-width: 650px;
+  max-height: 650px;
+  padding-bottom: 1%;
 }
