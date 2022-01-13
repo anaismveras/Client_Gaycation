@@ -62,7 +62,7 @@ const App = () => {
 
 	useEffect(() => {
 		getGaycations()
-	}, [user])
+	}, [user, gaycations])
 
 	return (
 		<Fragment>

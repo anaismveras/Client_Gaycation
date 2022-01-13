@@ -1,9 +1,11 @@
 import React from 'react'
 // import noImage from '../images/main/noImage.jpeg'
 import axios from 'axios'
+import { useState } from 'react'
 
 const DestinationFound = (props) => {
 
+    const [likedGaycations, setLikedGaycations] = useState({})
     const builtDestinationsCityInfo = []
     const builtDestinationsImageInfo = []
     const allInfo = props.destinationsData.concat(props.destinationsIncluded)
@@ -47,7 +49,7 @@ const DestinationFound = (props) => {
 
         const allCityInfo = builtDestinationsCityInfo.map((e) => {
             let temp = builtDestinationsImageInfo.find(element => element.cityImageId === e.cityImageId)
-            console.log('this is temp', temp)
+            // console.log('this is temp', temp)
                 if (temp) {
                     e.imageUrl = temp.imageUrl
                 } 
@@ -56,7 +58,7 @@ const DestinationFound = (props) => {
         // console.log('this is everything', allCityInfo)
 
         const saveCity = (place) => {
-            console.log('place', allCityInfo[place])
+            // console.log('place', allCityInfo[place])
                 axios.post(`http://localhost:8000/destinations`, {
                     body: allCityInfo[place]
                 },
@@ -65,10 +67,11 @@ const DestinationFound = (props) => {
                         "Authorization": `Bearer ${props.user.token}`
                     }
                 })
+                .then()
         }
 
         const mapDestinations = allCityInfo.map((place, i) => {
-            console.log('this is place', place)
+            // console.log('this is place', place)
             if (place.imageUrl) {
                 return (
                     <div className="favPlace">
