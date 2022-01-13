@@ -16,6 +16,7 @@ import ChangePassword from './components/auth/ChangePassword'
 import SearchDestination from './components/main/SearchDestination'
 import UsersGaycations from './components/main/UsersGaycations'
 import Contact from './components/Contact'
+import DestinationProfile from './components/main/DestinationProfile'
 // import apiUrl from './apiConfig'
 
 const App = () => {
@@ -23,7 +24,11 @@ const App = () => {
 	const [user, setUser] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
 	// gaycations states
-	const [gaycations, setGaycations] = useState([])
+	// const [gaycations, setGaycations] = useState([])
+	const [inputValue, setInputValue] = useState('')
+    const [subValue, setSubValue] = useState('')
+    const [destinationsData, setDestinationsData] = useState([])
+    const [destinationsIncluded, setDestinationsIncluded] = useState([])
 
 
 	console.log('user in app', user)
@@ -48,42 +53,27 @@ const App = () => {
 		})
 	}
 
-	// ----------- FOR USERGAYCATIONS.JS --------------- //
+	// -----------  FOR USERGAYCATIONS.JS --------------- //
 	// call API to get gaycations in db
-	const getGaycations = () => {
-		if (user !== null) {
-			axios.get('http://localhost:8000/destinations',{
-				headers: {
-					"Authorization": `Bearer ${user.token}`
-				}
-			})
-			.then(foundGaycations => {
-				console.log('this is faves', foundGaycations)
-				setGaycations(foundGaycations)
-			})
-		}
-    }
+	// const getGaycations = () => {
+	// 	if (user !== null) {
+	// 		axios.get('http://localhost:8000/destinations',{
+	// 			headers: {
+	// 				"Authorization": `Bearer ${user.token}`
+	// 			}
+	// 		})
+	// 		.then(foundGaycations => {
+	// 			// console.log('this is faves', foundGaycations)
+	// 			setGaycations(foundGaycations)
+	// 		})
+	// 	}
+    // }
 
-	// recall the API whenever a user signs in and whenever a user added it to gaycations
-	useEffect(() => {
-		getGaycations()
-	}, [user, gaycations])
+	// // recall the API whenever a user signs in and whenever a user added it to gaycations
+	// useEffect(() => {
+	// 	getGaycations()
+	// }, [user])
 
-
-	// ----------- FOR DESTINATIONSPROFILE.JS --------------- //
-	const getDestinationInfo = () => {
-		if (user !== null) {
-			axios.get(`http://localhost:8000/destinations/${}`,{
-				headers: {
-					"Authorization": `Bearer ${user.token}`
-				}
-			})
-			.then(foundGaycations => {
-				setGaycations(foundGaycations)
-			})
-		}
-	}
-	}
 
 	return (
 		<Fragment>
@@ -138,8 +128,8 @@ const App = () => {
 							<UsersGaycations
 								user={user}
 								msgAlert={msgAlert}
-								gaycations={gaycations.data}
-								getGaycations={getGaycations}
+								// gaycations={gaycations.data}
+								// getGaycations={getGaycations}
 							/>
 						</RequireAuth>
 					}
@@ -148,7 +138,7 @@ const App = () => {
 					path='/destination-profile'
 					element={
 						<RequireAuth user={user}>
-							<UsersGaycations
+							<DestinationProfile
 								user={user}
 								msgAlert={msgAlert}
 							/>

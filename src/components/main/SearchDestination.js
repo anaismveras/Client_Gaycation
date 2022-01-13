@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 // import apiUrl from "../../apiConfig"
 import DestinationFound from "./DestinationsFound"
+import DestinationProfile from "./DestinationProfile"
 
 const SearchDestination = (props) => {
 
@@ -63,9 +64,13 @@ const SearchDestination = (props) => {
                 <DestinationFound 
                 destinationsData={destinationsData} 
                 destinationsIncluded={destinationsIncluded} 
-                // addToGaycation={handleButton}
                 user={props.user}
                 />
+                {/* <DestinationProfile 
+                destinationsData={destinationsData} 
+                destinationsIncluded={destinationsIncluded} 
+                user={props.user}
+                /> */}
         </div>
     )
 }

@@ -1,7 +1,6 @@
 import React from 'react'
 // import noImage from '../images/main/noImage.jpeg'
 import axios from 'axios'
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const DestinationFound = (props) => {
@@ -75,7 +74,7 @@ const DestinationFound = (props) => {
             if (place.imageUrl) {
                 return (
                     <div className="favPlace">
-                    <Link to='destination-profile'><div class="favPlaceName"><h3>{place.cityName}</h3></div></Link>
+                    <Link to='/destination-profile'><div class="favPlaceName"><h3>{place.cityName}</h3></div></Link>
                     <img src={place.imageUrl} alt={place.cityName} className="favPlaceImg" /><br></br>
                     <button class="addFavBtn" onClick={() => {saveCity(i)}}>Add to your Gaycations</button>
                 </div>
@@ -83,7 +82,7 @@ const DestinationFound = (props) => {
             } else {
                 return (
                     <div>
-                    <Link to='destination-profile'><div class="favPlaceName"><h3>{place.cityName}</h3></div></Link>
+                    <Link to='/destination-profile'><div class="favPlaceName"><h3>{place.cityName}</h3></div></Link>
                     <p>{place.cityImageId}</p>
                     <button class="addFavBtn" onClick={() => {saveCity(i)}}>Add to your Gaycations</button>
                 </div>
