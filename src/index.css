@@ -173,3 +173,12 @@ code {
   text-align: center;
   padding-top: 2.5%;
 }
+
+.cityAttributes {
+  /* display: flex;
+  flex-direction: row; */
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  margin: 2%;
+}
