@@ -7,8 +7,7 @@ const UsersGaycations = (props) => {
 
   const getGaycations = () => {
     if (props.user !== null) {
-      axios
-        .get("http://localhost:8000/destinations", {
+      axios.get('http://localhost:8000/destinations', {
           headers: {
             Authorization: `Bearer ${props.user.token}`,
           },
@@ -22,8 +21,7 @@ const UsersGaycations = (props) => {
   const handleDelete = (e) => {
     e.preventDefault();
     if (props.user !== null) {
-      axios
-        .delete(`http://localhost:8000/destination/${e.target.value}`, {
+      axios.delete(`http://localhost:8000/destination/${e.target.value}`, {
           headers: {
             Authorization: `Bearer ${props.user.token}`,
           },
@@ -41,7 +39,7 @@ const UsersGaycations = (props) => {
     if (place.image_url.length === 31) {
       return (
         <div className="favPlace">
-          <Link>
+          <Link to={`/destination-profile/${place.cityId}`}>
             <h3>{place.city}</h3>
           </Link>
           <p>There is no image for this city</p>
@@ -54,7 +52,7 @@ const UsersGaycations = (props) => {
       return (
         // destinations in the db with images
         <div className="favPlace">
-          <Link>
+          <Link to={`/destination-profile/${place.cityId}`}>
             <h3>{place.city}</h3>
           </Link>
           <img src={place.image_url} alt={place.city} className="favPlaceImg" />
