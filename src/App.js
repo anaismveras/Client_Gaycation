@@ -1,10 +1,8 @@
-// import React, { Component, Fragment } from 'react'
-import React, { useState, Fragment, useEffect } from 'react'
+
+import React, { useState, Fragment } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
-import axios from 'axios'
 
-// import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
 import AutoDismissAlert from './components/shared/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/shared/Header'
 import RequireAuth from './components/shared/RequireAuth'
@@ -17,18 +15,13 @@ import SearchDestination from './components/main/SearchDestination'
 import UsersGaycations from './components/main/UsersGaycations'
 import Contact from './components/Contact'
 import DestinationProfile from './components/main/DestinationProfile'
-// import apiUrl from './apiConfig'
+import DestinationProfileFromGaycation from './components/main/DestinationProfileFromGaycation'
+
 
 const App = () => {
 
 	const [user, setUser] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
-	// gaycations states
-	// const [gaycations, setGaycations] = useState([])
-	const [inputValue, setInputValue] = useState('')
-    const [subValue, setSubValue] = useState('')
-    const [destinationsData, setDestinationsData] = useState([])
-    const [destinationsIncluded, setDestinationsIncluded] = useState([])
 
 
 	console.log('user in app', user)
@@ -115,6 +108,17 @@ const App = () => {
 					element={
 						<RequireAuth user={user}>
 							<DestinationProfile
+								user={user}
+								msgAlert={msgAlert}
+							/>
+						</RequireAuth>
+					}
+				/>
+				<Route
+					path='/destination-profile/gaycation/:roadGoatId'
+					element={
+						<RequireAuth user={user}>
+							<DestinationProfileFromGaycation
 								user={user}
 								msgAlert={msgAlert}
 							/>
