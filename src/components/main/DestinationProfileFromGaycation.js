@@ -38,7 +38,6 @@ const DestinationProfileFromGaycation = (props) => {
             { 
                 review: {
                     username: props.user.username,
-                    // userId: props.user.username,
                     body: e.target.review.value
                 }
             },
@@ -53,20 +52,7 @@ const DestinationProfileFromGaycation = (props) => {
             .catch(err => console.log(err))
         }
         
-        console.log('city data', cityData.reviews)
-        const mapReviews = cityData.reviews.map(word => {
-            // console.log('word', word)
-            return (
-                <div>
-                    <form>
-                    <h4>{word.username}</h4>
-                    <p>{word.body}</p>
-                    <input type="submit" value="Delete Comment" />
-                    </form>
-                </div>
-            )
-        })
-        
+        console.log('city data', cityData)
 
         return (
             <div>
@@ -78,8 +64,8 @@ const DestinationProfileFromGaycation = (props) => {
                     <br />
                     <input name="review" type="text" id="review" />
                     <input type="submit" />
-                </form>
-                {mapReviews}
+                </form> 
+                {/* {mapReviews} */}
             </div>
         )
 }
