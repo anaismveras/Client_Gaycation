@@ -4,11 +4,14 @@ import { useLocation } from "react-router-dom"
 import React from 'react';
 
 const DestinationProfileFromGaycation = (props) => {
+    useEffect(() => {
+        handleClick()
+    }, [])
+
     const {pathname} = useLocation()
     const cityId = pathname.split('/')[3]
 
     const [cityData, setCityData] = useState([])
-    const [gotReviews, setGotReviews] = useState([])
     
     // call the API to get one destination 
     const handleClick = () => {
@@ -30,9 +33,7 @@ const DestinationProfileFromGaycation = (props) => {
         const createReview = (e) => {
             e.preventDefault()
             // console.log('created review', cityData._id)
-            console.log('inputbox', e.target.review.value)
-            // console.log("body", inputValue)
-            console.log('username', props.user.username)
+
             axios.post(`http://localhost:8000/reviews/${cityData._id}`, 
             { 
                 review: {
@@ -46,46 +47,26 @@ const DestinationProfileFromGaycation = (props) => {
                     Authorization: `Bearer ${props.user.token}`,
                 },
             })
-            .then(createdReview => {
-                console.log('is created', createdReview)
-            })
+            // .then(createdReview => {
+            //     console.log('is created', createdReview)
+            // })
             .catch(err => console.log(err))
         }
         
-        const getReview = () => {
-            axios.get(`http://localhost:8000/reviews/${cityData._id}`,
-            {
-                headers: {
-                    Authorization: `Bearer ${props.user.token}`,
-                },
-            })
-            .then(gotReview => {
-                // console.log('this is got review', gotReview.data)
-                const allReviews = []
-                gotReview.data.forEach((item) => {
-                    allReviews.push(item);
-                  });
-                //   console.log('all reviews', allReviews)
-                setGotReviews(allReviews)
-            })
-            .catch(err => console.log(err))
-        }
-        
-        useEffect(() => {
-            handleClick()
-            getReview()
-        }, [])
-        
-        const mapGotReviews = gotReviews.map(body => {
-            // return console.log('mapGotReviews', body)
+        console.log('city data', cityData.reviews)
+        const mapReviews = cityData.reviews.map(word => {
+            // console.log('word', word)
             return (
                 <div>
-                    <h5>{body.username}</h5>
-                    <p>{body.body}</p>
+                    <form>
+                    <h4>{word.username}</h4>
+                    <p>{word.body}</p>
+                    <input type="submit" value="Delete Comment" />
+                    </form>
                 </div>
             )
         })
-        // console.log('there is alot', gotReviews)
+        
 
         return (
             <div>
@@ -98,7 +79,7 @@ const DestinationProfileFromGaycation = (props) => {
                     <input name="review" type="text" id="review" />
                     <input type="submit" />
                 </form>
-                {mapGotReviews}
+                {mapReviews}
             </div>
         )
 }

@@ -31,8 +31,8 @@ const UsersGaycations = (props) => {
   };
 
   useEffect(() => {
-    getGaycations();
-  }, []);
+    getGaycations()
+  }, [])
 
   const mapGaycations = gaycations.map((place) => {
     // in the db destinations without an image is saved as "There is no image for this city" that is ALWAYS 31 characters
