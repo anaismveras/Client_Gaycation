@@ -56,7 +56,7 @@ const DestinationFound = (props) => {
     }
     return e;
   });
-  console.log('this is everything', allCityInfo)
+  // console.log('this is everything', allCityInfo)
 
   const saveCity = (place) => {
     // console.log('place', allCityInfo[place])
