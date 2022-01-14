@@ -71,7 +71,7 @@ const DestinationFound = (props) => {
   };
 
   const mapDestinations = allCityInfo.map((place, i) => {
-    console.log('this is place', place)
+    // console.log('this is place', place)
     if (place.imageUrl) {
       return (
         <div className="favPlace">

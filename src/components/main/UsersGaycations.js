@@ -36,33 +36,16 @@ const UsersGaycations = (props) => {
 
   const mapGaycations = gaycations.map((place) => {
     // in the db destinations without an image is saved as "There is no image for this city" that is ALWAYS 31 characters
-    if (place.image_url.length === 31) {
-      return (
+    return (
         <div className="favPlace">
-          <Link to={`/destination-profile/gayction/${place.roadGoatId}`}>
+            <Link to={`/destination-profile/gaycation/${place.roadGoatId}`}>
             <h3>{place.city}</h3>
-          </Link>
-          <p>There is no image for this city</p>
-          <button onClick={handleDelete} value={place._id}>
-            Delete Gaycation
-          </button>
+           </Link>
+            {place.image_url === 'There is no image for this city' ? <p>There is no image for this city</p> : <img src={place.image_url} alt={place.city} className="favPlaceImg" /> }
+            <br />
+            <button onClick={handleDelete} value={place._id}>Delete Gaycation</button>
         </div>
-      )
-    } else {
-      return (
-        // destinations in the db with images
-        <div className="favPlace">
-          <Link to={`/destination-profile/gaycation/${place.roatGoatId}`}>
-            <h3>{place.city}</h3>
-          </Link>
-          <img src={place.image_url} alt={place.city} className="favPlaceImg" />
-          <br></br>
-          <button onClick={handleDelete} value={place._id}>
-            Delete Gaycation
-          </button>
-        </div>
-      )
-    }
+    )
   })
 
   return (

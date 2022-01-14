@@ -3,37 +3,34 @@ import axios from "axios"
 import { useLocation } from "react-router-dom"
 import React from 'react';
 
-const DestinationProfileFromGaycation = () => {
-    // const {pathname} = useLocation()
-    // const cityId = pathname.split('/')[3]
+const DestinationProfileFromGaycation = (props) => {
+    const {pathname} = useLocation()
+    const cityId = pathname.split('/')[3]
 
-    return <h1>This Gaycation</h1>
-    // const [cityData, setCityData] = useState([])
-    // const [cityIncluded, setCityIncluded] = useState([])
-
-    // const handleClick = () => {
-    //   axios.get(
-    //     `http://localhost:8000/destination/${cityId}`,
-    //     {
-    //       headers: {
-    //         Authorization: `Bearer ${props.user.token}`,
-    //       },
-    //     }
-    //   )
-    //   .then(clickedCity => {
-    //       const allCitiesIncluded = []
-    //       clickedCity.data.included.forEach(item => {
-    //           allCitiesIncluded.push(item)
-    //       })
-    //       setCityData(clickedCity.data.data)
-    //       setCityIncluded(allCitiesIncluded)
-    //   })
-    //   .catch(err => console.log(err))
-    // }
-    // useEffect(() => {
-    //   handleClick()
-    // }, [])
-
+    const [cityData, setCityData] = useState([])
+    
+    const handleClick = () => {
+        axios.get(
+            `http://localhost:8000/destination/${cityId}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${props.user.token}`,
+                },
+            }
+            )
+            .then(clickedCity => {
+                console.log('this is clicked City', clickedCity)
+            })
+            .catch(err => console.log(err))
+        }
+        
+        useEffect(() => {
+            handleClick()
+        }, [])
+        
+        return (
+            <h1>Gaycation Profile</h1>
+        )
 }
 
 export default DestinationProfileFromGaycation
