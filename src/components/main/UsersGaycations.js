@@ -32,14 +32,14 @@ const UsersGaycations = (props) => {
 
   useEffect(() => {
     getGaycations();
-  }, [gaycations]);
+  }, []);
 
   const mapGaycations = gaycations.map((place) => {
     // in the db destinations without an image is saved as "There is no image for this city" that is ALWAYS 31 characters
     if (place.image_url.length === 31) {
       return (
         <div className="favPlace">
-          <Link to={`/destination-profile/${place.cityId}`}>
+          <Link to={`/destination-profile/gayction/${place.roadGoatId}`}>
             <h3>{place.city}</h3>
           </Link>
           <p>There is no image for this city</p>
@@ -47,12 +47,12 @@ const UsersGaycations = (props) => {
             Delete Gaycation
           </button>
         </div>
-      );
+      )
     } else {
       return (
         // destinations in the db with images
         <div className="favPlace">
-          <Link to={`/destination-profile/${place.cityId}`}>
+          <Link to={`/destination-profile/gaycation/${place.roatGoatId}`}>
             <h3>{place.city}</h3>
           </Link>
           <img src={place.image_url} alt={place.city} className="favPlaceImg" />
@@ -61,9 +61,9 @@ const UsersGaycations = (props) => {
             Delete Gaycation
           </button>
         </div>
-      );
+      )
     }
-  });
+  })
 
   return (
     <div>

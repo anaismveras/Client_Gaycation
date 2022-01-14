@@ -15,6 +15,7 @@ import SearchDestination from './components/main/SearchDestination'
 import UsersGaycations from './components/main/UsersGaycations'
 import Contact from './components/Contact'
 import DestinationProfile from './components/main/DestinationProfile'
+import DestinationProfileFromGaycation from './components/main/DestinationProfileFromGaycation'
 
 
 const App = () => {
@@ -107,6 +108,17 @@ const App = () => {
 					element={
 						<RequireAuth user={user}>
 							<DestinationProfile
+								user={user}
+								msgAlert={msgAlert}
+							/>
+						</RequireAuth>
+					}
+				/>
+				<Route
+					path='/destination-profile/gaycation/:roadGoatId'
+					element={
+						<RequireAuth user={user}>
+							<DestinationProfileFromGaycation
 								user={user}
 								msgAlert={msgAlert}
 							/>

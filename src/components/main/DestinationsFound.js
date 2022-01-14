@@ -71,12 +71,12 @@ const DestinationFound = (props) => {
   };
 
   const mapDestinations = allCityInfo.map((place, i) => {
-    // console.log('this is place', place)
+    console.log('this is place', place)
     if (place.imageUrl) {
       return (
         <div className="favPlace">
           <Link to={`/destination-profile/${place.cityId}`}>
-            <div class="favPlaceName">
+            <div className="favPlaceName">
               <h3>{place.cityName}</h3>
             </div>
           </Link>
@@ -87,7 +87,7 @@ const DestinationFound = (props) => {
           />
           <br></br>
           <button
-            class="addFavBtn"
+            className="addFavBtn"
             onClick={() => {
               saveCity(i);
             }}
@@ -103,13 +103,13 @@ const DestinationFound = (props) => {
             onClick={props.handleClick}
             to={`/destination-profile/${place.cityId}`}
           >
-            <div class="favPlaceName">
+            <div className="favPlaceName">
               <h3>{place.cityName}</h3>
             </div>
           </Link>
           <p>{place.cityImageId}</p>
           <button
-            class="addFavBtn"
+            className="addFavBtn"
             onClick={() => {
               saveCity(i);
             }}
