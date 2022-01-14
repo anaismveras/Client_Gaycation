@@ -37,7 +37,7 @@ const DestinationProfile = (props) => {
     console.log('this is city included', cityIncluded)
 
     return (
-      <div className="desProfPage"><br></br><h1><u>{}</u></h1>
+      <div className="desProfPage"><br></br><h1><u></u></h1>
       </div>
     )
 }

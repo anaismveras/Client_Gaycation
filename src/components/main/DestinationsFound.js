@@ -3,7 +3,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const DestinationFound = (props) => {
-
   const builtDestinationsCityInfo = [];
   const builtDestinationsImageInfo = [];
   const allInfo = props.destinationsData.concat(props.destinationsIncluded);
@@ -69,35 +68,68 @@ const DestinationFound = (props) => {
         }
       )
       .catch((err) => console.log(err));
-  }
+  };
 
-        const mapDestinations = allCityInfo.map((place, i) => {
-            // console.log('this is place', place)
-            if (place.imageUrl) {
-                return (
-                    <div className="favPlace">
-                    <Link to={`/destination-profile/${place.cityId}`}><div class="favPlaceName"><h3>{place.cityName}</h3></div></Link>
-                    <img src={place.imageUrl} alt={place.cityName} className="favPlaceImg" /><br></br>
-                    <button class="addFavBtn" onClick={() => {saveCity(i)}}>Add to your Gaycations</button>
-                </div>
-                )
-            } else {
-                return (
-                    <div>
-                    <Link onClick={props.handleClick} to={`/destination-profile/${place.cityId}`}><div class="favPlaceName"><h3>{place.cityName}</h3></div></Link>
-                    <p>{place.cityImageId}</p>
-                    <button class="addFavBtn" onClick={() => {saveCity(i)}}>Add to your Gaycations</button>
-                </div>
-                )
-            }
-        })
-
-    return (
-        <div class="destinations">
-            <br></br><h1><u>Destinations</u></h1>
-            {mapDestinations}
+  const mapDestinations = allCityInfo.map((place, i) => {
+    // console.log('this is place', place)
+    if (place.imageUrl) {
+      return (
+        <div className="favPlace">
+          <Link to={`/destination-profile/${place.cityId}`}>
+            <div class="favPlaceName">
+              <h3>{place.cityName}</h3>
+            </div>
+          </Link>
+          <img
+            src={place.imageUrl}
+            alt={place.cityName}
+            className="favPlaceImg"
+          />
+          <br></br>
+          <button
+            class="addFavBtn"
+            onClick={() => {
+              saveCity(i);
+            }}
+          >
+            Add to your Gaycations
+          </button>
         </div>
-  )
+      );
+    } else {
+      return (
+        <div>
+          <Link
+            onClick={props.handleClick}
+            to={`/destination-profile/${place.cityId}`}
+          >
+            <div class="favPlaceName">
+              <h3>{place.cityName}</h3>
+            </div>
+          </Link>
+          <p>{place.cityImageId}</p>
+          <button
+            class="addFavBtn"
+            onClick={() => {
+              saveCity(i);
+            }}
+          >
+            Add to your Gaycations
+          </button>
+        </div>
+      );
+    }
+  });
+
+  return (
+    <div class="destinations">
+      <br></br>
+      <h1>
+        <u>Destinations</u>
+      </h1>
+      {mapDestinations}
+    </div>
+  );
 };
 
 export default DestinationFound;
