@@ -1,5 +1,6 @@
 import axios from "axios"
 import React, { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 
 
 const UsersGaycations = (props) => {
@@ -14,14 +15,12 @@ const UsersGaycations = (props) => {
                 }
             })
                 .then(foundGaycations => {
-                    // console.log('this is faves', foundGaycations.data)
                     setGaycations(foundGaycations.data)
                 })
         }
     }
 
     const handleDelete = (e) => {
-        // console.log('this is delete', e.target)
         e.preventDefault()
         if (props.user !== null) {
             axios.delete(`http://localhost:8000/destination/${e.target.value}`, {
@@ -38,19 +37,24 @@ const UsersGaycations = (props) => {
     }, [gaycations])
 
     const mapGaycations = gaycations.map(place => {
-        // console.log('this is place', place._id)
+        // in the db destinations without an image is saved as "There is no image for this city" that is ALWAYS 31 characters 
         if (place.image_url.length === 31) {
             return (
                 <div className="favPlace">
+                    <Link>
                     <h3>{place.city}</h3>
+                    </Link>
                     <p>There is no image for this city</p>
                     <button onClick={handleDelete} value={place._id}>Delete Gaycation</button>
                 </div>
             )
         } else {
             return (
+                // destinations in the db with images
                 <div className="favPlace">
+                        <Link>
                         <h3>{place.city}</h3>
+                        </Link>
                         <img src={place.image_url} alt={place.city} className="favPlaceImg" /><br></br>
                         <button onClick={handleDelete} value={place._id}>Delete Gaycation</button>
                 </div>
