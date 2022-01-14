@@ -4,6 +4,9 @@ import { useLocation } from "react-router-dom"
 
 
 const DestinationProfile = (props) => {
+
+
+
     const {pathname} = useLocation()
     const cityId = pathname.split('/')[2]
 
@@ -31,8 +34,8 @@ const DestinationProfile = (props) => {
       })
       .catch(err => console.log(err))
     }
-    // console.log('this is destination Data', cityData)
-    // console.log('this is city included', cityIncluded)
+    console.log('this is destination Data', cityData)
+    console.log('this is city included', cityIncluded)
     useEffect(() => {
       handleClick()
     }, [])
@@ -40,6 +43,13 @@ const DestinationProfile = (props) => {
 
     return (
       <div className="desProfPage"><br></br><h1><u>Destination Information</u></h1>
+      <h3><div className="cityAttributes">
+        {cityData.attributes.cityName}<br></br>
+        {cityData.attributes.url}<br></br>
+        General Rating: {cityData.attributes.average_rating}<br></br>
+        Population: {cityData.attributes.population}<br></br>
+      </div>
+      </h3>
       </div>
     )
 }
