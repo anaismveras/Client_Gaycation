@@ -27,7 +27,9 @@ const DestinationProfileFromGaycation = (props) => {
                 // console.log('this is clicked City', clickedCity.data[0])
                 setCityData(clickedCity.data[0])
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err)
+            })
         }
         
         const createReview = (e) => {
@@ -52,7 +54,17 @@ const DestinationProfileFromGaycation = (props) => {
             .catch(err => console.log(err))
         }
         
-        console.log('city data', cityData)
+        console.log('this is city Data', cityData)
+
+        const mapingReviews = () => {
+            if (cityData.reviews.length === 0) {
+               return <h1>...Reviews Loading...</h1>
+            } else {
+                return (
+                cityData.reviews.map(word => {
+                console.log('word', word)
+            }))
+        } }
 
         return (
             <div>
@@ -65,7 +77,7 @@ const DestinationProfileFromGaycation = (props) => {
                     <input name="review" type="text" id="review" />
                     <input type="submit" />
                 </form> 
-                {/* {mapReviews} */}
+                {mapingReviews}
             </div>
         )
 }
