@@ -1,9 +1,6 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import axios from "axios"
-// import apiUrl from "../../apiConfig"
 import DestinationFound from "./DestinationsFound"
-import DestinationProfile from "./DestinationProfile"
-import { useParams } from "react-router-dom"
 
 const SearchDestination = (props) => {
 

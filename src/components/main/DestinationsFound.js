@@ -1,5 +1,4 @@
 import React from "react";
-// import noImage from '../images/main/noImage.jpeg'
 import axios from "axios";
 import { Link } from "react-router-dom";
 
