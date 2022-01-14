@@ -55,8 +55,7 @@ const DestinationFound = (props) => {
 
   const saveCity = (place) => {
     // console.log('place', allCityInfo[place])
-    axios
-      .post(
+    axios.post(
         `http://localhost:8000/destinations`,
         {
           body: allCityInfo[place],
