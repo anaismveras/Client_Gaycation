@@ -2,15 +2,13 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import { useLocation } from "react-router-dom"
 import React from 'react';
-import { unstable_concurrentAct } from "react-dom/cjs/react-dom-test-utils.production.min";
 
 const DestinationProfileFromGaycation = (props) => {
     const {pathname} = useLocation()
     const cityId = pathname.split('/')[3]
 
     const [cityData, setCityData] = useState([])
-    const [inputValue, setInputValue] = useState("")
-    const [subVal, setSubVal] = useState("")
+    const [gotReviews, setGotReviews] = useState([])
     
     // call the API to get one destination 
     const handleClick = () => {
@@ -23,25 +21,15 @@ const DestinationProfileFromGaycation = (props) => {
             }
             )
             .then(clickedCity => {
-                console.log('this is clicked City', clickedCity.data[0])
+                // console.log('this is clicked City', clickedCity.data[0])
                 setCityData(clickedCity.data[0])
             })
             .catch(err => console.log(err))
         }
-
-        useEffect(() => {
-            handleClick()
-        }, [])
         
-        const handleChange = (e) => {
-            // console.log('thisis value', e.target.value)
-            setInputValue(e.target.value);
-          };
-
         const createReview = (e) => {
             e.preventDefault()
             // console.log('created review', cityData._id)
-            setSubVal(inputValue)
             console.log('inputbox', e.target.review.value)
             // console.log("body", inputValue)
             console.log('username', props.user.username)
@@ -63,6 +51,41 @@ const DestinationProfileFromGaycation = (props) => {
             })
             .catch(err => console.log(err))
         }
+        
+        const getReview = () => {
+            axios.get(`http://localhost:8000/reviews/${cityData._id}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${props.user.token}`,
+                },
+            })
+            .then(gotReview => {
+                // console.log('this is got review', gotReview.data)
+                const allReviews = []
+                gotReview.data.forEach((item) => {
+                    allReviews.push(item);
+                  });
+                //   console.log('all reviews', allReviews)
+                setGotReviews(allReviews)
+            })
+            .catch(err => console.log(err))
+        }
+        
+        useEffect(() => {
+            handleClick()
+            getReview()
+        }, [])
+        
+        const mapGotReviews = gotReviews.map(body => {
+            // return console.log('mapGotReviews', body)
+            return (
+                <div>
+                    <h5>{body.username}</h5>
+                    <p>{body.body}</p>
+                </div>
+            )
+        })
+        // console.log('there is alot', gotReviews)
 
         return (
             <div>
@@ -72,9 +95,10 @@ const DestinationProfileFromGaycation = (props) => {
                 <form onSubmit={createReview}>
                     <label htmlFor="review">Write a Review:</label>
                     <br />
-                    <input onChange={handleChange} name="review" type="text" id="review" />
+                    <input name="review" type="text" id="review" />
                     <input type="submit" />
                 </form>
+                {mapGotReviews}
             </div>
         )
 }
