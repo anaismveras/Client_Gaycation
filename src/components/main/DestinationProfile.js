@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import { useLocation } from "react-router-dom"
-
+import React from 'react';
 
 const DestinationProfile = (props) => {
     const {pathname} = useLocation()

@@ -8,8 +8,6 @@ const SearchDestination = (props) => {
   const [subValue, setSubValue] = useState("");
   const [destinationsData, setDestinationsData] = useState([]);
   const [destinationsIncluded, setDestinationsIncluded] = useState([]);
-  // const [cityData, setCityData] = useState([])
-  // const [cityIncluded, setCityIncluded] = useState([])
 
   const handleChange = (e) => {
     // for checking
