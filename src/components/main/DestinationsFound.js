@@ -2,9 +2,6 @@ import React from "react";
 // import noImage from '../images/main/noImage.jpeg'
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import DestinationProfile from "./DestinationProfile";
-import { useLocation } from "react-router-dom";
 
 const DestinationFound = (props) => {
 

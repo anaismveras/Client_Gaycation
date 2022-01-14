@@ -23,8 +23,6 @@ const DestinationProfile = (props) => {
         }
       )
       .then(clickedCity => {
-          // console.log('this city was clicked', clickedCity.data)
-          // console.log('this city was clicked', clickedCity.data.included)
           const allCitiesIncluded = []
           clickedCity.data.included.forEach(item => {
               allCitiesIncluded.push(item)
@@ -34,12 +32,12 @@ const DestinationProfile = (props) => {
       })
       .catch(err => console.log(err))
     }
-    console.log('this is destination Data', cityData)
-    console.log('this is city included', cityIncluded)
     useEffect(() => {
       handleClick()
     }, [])
-
+    
+    console.log('this is destination Data', cityData)
+    console.log('this is city included', cityIncluded)
 
     return (
       <div className="desProfPage"><br></br><h1><u>Destination Information</u></h1>
@@ -55,3 +53,4 @@ const DestinationProfile = (props) => {
 }
 
 export default DestinationProfile
+
