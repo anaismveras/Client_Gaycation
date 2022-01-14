@@ -62,7 +62,6 @@ const UsersGaycations = (props) => {
         }
     })
 
-
     return (
         <div>
             {
