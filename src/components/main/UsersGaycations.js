@@ -20,31 +20,39 @@ const UsersGaycations = (props) => {
         }
     }
 
+    const handleDelete = (e) => {
+        // console.log('this is delete', e.target)
+        e.preventDefault()
+        if (props.user !== null) {
+            axios.delete(`http://localhost:8000/destination/${e.target.value}`, {
+                headers: {
+                    "Authorization": `Bearer ${props.user.token}`
+                }
+            })
+            .catch(err => console.log(err))
+        }
+    }
+    
     useEffect(() => {
         getGaycations()
-    }, [])
+    }, [gaycations])
 
     const mapGaycations = gaycations.map(place => {
+        // console.log('this is place', place._id)
         if (place.image_url.length === 31) {
             return (
-                // add an onsubmit(handledelete)
                 <div className="favPlace">
-                <form>
                     <h3>{place.city}</h3>
                     <p>There is no image for this city</p>
-                    <input type="Submit" value="Delete Gaycation" />
-                </form>
+                    <button onClick={handleDelete} value={place._id}>Delete Gaycation</button>
                 </div>
             )
         } else {
             return (
-                // add an onsubmit(handledelete)
                 <div className="favPlace">
-                    <form>
                         <h3>{place.city}</h3>
                         <img src={place.image_url} alt={place.city} className="favPlaceImg" /><br></br>
-                        <input type="Submit" value="Delete Gaycation" />
-                    </form>
+                        <button onClick={handleDelete} value={place._id}>Delete Gaycation</button>
                 </div>
             )
         }
