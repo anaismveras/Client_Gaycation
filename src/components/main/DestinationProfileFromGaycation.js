@@ -3,6 +3,16 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import React from "react";
 
+let colors = [ 'rgba(255,0,0,0.6)', 'rgba(255,127,0,0.6)', 'rgba(255,255,0,0.6)', 'rgba(0,255,0,0.6)', 'rgba(0,0,255,0.6)', 'rgba(75,0,130,0.6)', 'rgba(148,0,211,0.6)' ]
+let random_color = colors[Math.floor(Math.random() * colors.length)]
+// let random_color = colors.map(color => {
+//     // console.log('color', color)
+// })
+const reviewStyle = {
+	'backgroundColor': random_color
+}
+
+
 const DestinationProfileFromGaycation = (props) => {
   useEffect(() => {
     handleClick();
@@ -66,10 +76,12 @@ const DestinationProfileFromGaycation = (props) => {
               });
       }
 
-    //   console.log('all reviews', allReviews)
+
+      console.log('all reviews', allReviews[Math.floor(Math.random() * allReviews.length)])
       const mapAllReviews = allReviews.map(review => {
           return (
-              <div>
+              <div className="reviewDiv" style={reviewStyle}>
+                  <br />
                   <h6>{review.username}</h6>
                   <p>{review.body}</p>
                   <button>Delete Review</button>
@@ -91,15 +103,16 @@ const DestinationProfileFromGaycation = (props) => {
             className="favPlaceImg"
           />
         )}
-        <div className="cityAttributes">
         <form onSubmit={createReview}>
           <label htmlFor="review">Write a Review:</label>
           <br />
           <input name="review" type="text" id="review" />
           <input type="submit" />
         </form>
+        <br />
+        <div className="cityPGAttributes">
         {mapAllReviews}
-      </div>
+        </div>
     </div>
   );
 };

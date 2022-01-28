@@ -182,3 +182,10 @@ code {
   text-align: center;
   margin: 2%;
 }
+
+.reviewDiv {
+  text-align: center;
+  margin: 2%;
+  color: lightcyan;
+  padding: 2%;
+}
