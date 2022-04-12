@@ -1,3 +1,4 @@
+import apiUrl from "../../apiConfig";
 import { useState, useEffect } from "react"
 import axios from "axios"
 import { useLocation } from "react-router-dom"
@@ -12,7 +13,7 @@ const DestinationProfile = (props) => {
 
     const handleClick = () => {
       axios.get(
-        `http://localhost:8000/destination/${cityId}`,
+        `${apiUrl}/destination/${cityId}`,
         {
           headers: {
             Authorization: `Bearer ${props.user.token}`,

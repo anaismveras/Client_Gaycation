@@ -1,3 +1,4 @@
+import apiUrl from '../apiConfig'
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -7,7 +8,7 @@ const UsersGaycations = (props) => {
 
   const getGaycations = () => {
     if (props.user !== null) {
-      axios.get('http://localhost:8000/destinations', {
+      axios.get(`${apiUrl}/destinations`, {
           headers: {
             Authorization: `Bearer ${props.user.token}`,
           },
@@ -21,7 +22,7 @@ const UsersGaycations = (props) => {
   const handleDelete = (e) => {
     e.preventDefault();
     if (props.user !== null) {
-      axios.delete(`http://localhost:8000/destination/${e.target.value}`, {
+      axios.delete(`${apiUrl}/destination/${e.target.value}`, {
           headers: {
             Authorization: `Bearer ${props.user.token}`,
           },

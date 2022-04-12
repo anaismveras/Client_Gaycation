@@ -1,3 +1,4 @@
+import apiUrl from "../../apiConfig";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
@@ -26,7 +27,7 @@ const DestinationProfileFromGaycation = (props) => {
   // call the API to get one destination
   const handleClick = () => {
     axios
-      .get(`http://localhost:8000/destinations/gaycations/${cityId}`, {
+      .get(`${apiUrl}/destinations/gaycations/${cityId}`, {
         headers: {
           Authorization: `Bearer ${props.user.token}`,
         },
@@ -46,7 +47,7 @@ const DestinationProfileFromGaycation = (props) => {
 
     axios
       .post(
-        `http://localhost:8000/reviews/${cityData._id}`,
+        `${apiUrl}/reviews/${cityData._id}`,
         {
           review: {
             username: props.user.username,

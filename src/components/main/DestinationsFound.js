@@ -1,3 +1,4 @@
+import apiUrl from '../apiConfig'
 import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -56,7 +57,7 @@ const DestinationFound = (props) => {
   const saveCity = (place) => {
     // console.log('place', allCityInfo[place])
     axios.post(
-        `http://localhost:8000/destinations`,
+        `${apiUrl}/destinations`,
         {
           body: allCityInfo[place],
         },

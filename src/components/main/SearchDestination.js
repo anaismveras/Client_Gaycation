@@ -1,3 +1,4 @@
+import apiUrl from '../apiConfig'
 import { useState } from "react";
 import axios from "axios";
 import DestinationFound from "./DestinationsFound";
@@ -21,7 +22,7 @@ const SearchDestination = (props) => {
     // console.log('submitting', inputValue)
     setSubValue(inputValue);
     axios
-      .get(`http://localhost:8000/destinations/${inputValue}`, {
+      .get(`${apiUrl}/destinations/${inputValue}`, {
         headers: {
           Authorization: `Bearer ${props.user.token}`,
         },
