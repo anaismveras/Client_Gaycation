@@ -1,4 +1,4 @@
-import apiUrl from '../apiConfig'
+import apiUrl from "../../apiConfig";
 import { useState } from "react";
 import axios from "axios";
 import DestinationFound from "./DestinationsFound";
